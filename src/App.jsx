@@ -18,7 +18,7 @@ function App() {
         creadores de eventos como a clientes que deseen asistir a ellos.
       </p><br /><br /><br />
       <img
-        src="../public/pre-landing/construccion.png"
+        src="/pre-landing/construccion.png"
         alt="construccion"
         width={230}
       /><br /><br />
