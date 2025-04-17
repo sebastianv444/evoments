@@ -1,11 +1,14 @@
-import { Button } from "./components/ui/button";
+import Header from "./components/Header";
+import AppRoutes from "./routes/AppRoutes";
 
 function App() {
   return (
-    <>
-      <h1>Hola</h1>
-      <Button >Button</Button>
-    </>
+    <div>
+      <Header></Header>
+      <main>
+        <AppRoutes />
+      </main>
+    </div>
   );
 }
 
