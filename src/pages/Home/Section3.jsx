@@ -9,7 +9,7 @@ function HomeSection3() {
     >
       <div className="flex flex-col lg:flex-row max-w-90 gap-24 md:max-w-245 lg:gap-18">
         <img
-          src="/src/assets/img/pagoHome.png"
+          src="/img-home/pagoHome.png"
           alt="img de pago seguro con evoments"
           className="md:m-0 w-58 h-55 md:w-110 md:h-100 
           drop-shadow-[0_0_15px_#6657f2] self-center"
