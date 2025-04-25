@@ -4,10 +4,10 @@ import { MdOutlineVerifiedUser } from "react-icons/md";
 function HomeSection3() {
   return (
     <section
-      className="h-screen bg-[#24274f] flex 
+      className="h-[120vh] sm:h-screen bg-[#24274f] flex 
     items-center justify-center"
     >
-      <div className="flex flex-col lg:flex-row max-w-90 gap-24 md:max-w-245 lg:gap-18">
+      <div className="flex flex-col lg:flex-row max-w-90 gap-18 md:max-w-245 lg:gap-18">
         <img
           src="/img-home/pagoHome.png"
           alt="img de pago seguro con evoments"
@@ -15,7 +15,7 @@ function HomeSection3() {
           drop-shadow-[0_0_15px_#6657f2] self-center"
         />
         <div>
-          <h2 className="md:mt-5 text-2xl font-bold md:text-4xl text-center">
+          <h2 className="mt-5 text-3xl font-bold md:text-4xl text-center">
             <span className="bg-gradient-to-r from-indigo-500 to-purple-500 text-transparent bg-clip-text">
               T
             </span>
@@ -39,7 +39,7 @@ function HomeSection3() {
           </p>
           <br />
           <br />
-          <div className="flex gap-13 flex-col md:flex-row flex-wrap">
+          <div className="flex gap-11 sm:gap-13 flex-col md:flex-row flex-wrap">
             <div className="flex gap-3">
               <div
                 className="border-2 border-white rounded-4xl block p-[8px] self-center 

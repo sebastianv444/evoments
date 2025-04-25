@@ -4,10 +4,10 @@ import { Typewriter } from "react-simple-typewriter";
 function HomeSection1({ children }) {
   return (
     <section
-      className="h-screen flex items-center p-7 lg:p-20 bg-cover bg-top-left
+      className="h-screen flex items-center p-5 md:p-7 lg:p-20 bg-cover bg-top-left
       bg-[url(/background-home/fondo-home-2.png)]"
     >
-      <div className="max-w-150 md:max-w-155">
+      <div className="max-w-160 md:max-w-155">
         <h1 className="text-4xl font-bold md:text-6xl">
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 from-20% to-cyan-400">
             <Typewriter words={["Crea"]} typeSpeed={40} cursor={false} />
@@ -19,22 +19,22 @@ function HomeSection1({ children }) {
           <Typewriter words={[" y vive"]} typeSpeed={40} cursor={false} />
           <br />
           <Typewriter
-            words={["eventos únicos con"]}
+            words={[" eventos únicos con"]}
             typeSpeed={40}
             cursor={false}
           />
           <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-indigo-600 from-30%">
             <Typewriter
-              words={["Evoments"]}
-              typeSpeed={189}
+              words={[" Evoments"]}
+              typeSpeed={190}
               cursor={false}
               delaySpeed={1000}
             />
           </span>
           <Typewriter
             words={[""]}
-            typeSpeed={150}
+            typeSpeed={160}
             cursor
             cursorStyle="|"
             delaySpeed={1000}
