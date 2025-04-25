@@ -12,7 +12,7 @@ function Header() {
   return (
     /* Si da Errores quitar el "z-10" de la className del header */
     <motion.header
-      className="w-full p-10 fixed flex justify-between items-center z-10
+      className="w-full p-7 sm:p-10 fixed flex justify-between items-center z-10
     bg-gray-300/30 backdrop-blur-lg border border-b-white/50 shadow-2xl"
       initial={{ opacity: 0, y: -100 }}
       animate={{ opacity: 1, y: 0 }}
@@ -22,7 +22,7 @@ function Header() {
         <img
           src="/LogosEvoments/LogoEvoments-imagotipo.png"
           alt="Logo del Nav"
-          className="w-39  transition duration-300 ease-in-out 
+          className="w-31 mt-3 md:mt-0 md:w-39 transition duration-300 ease-in-out 
           hover:drop-shadow-[0_0_15px_#18FFFF]"
         />
       </Link>
@@ -61,7 +61,7 @@ function Header() {
         <Button
           className="bg-linear-to-r/hsl from-indigo-500 to-teal-300 px-5 
           text-[0.920rem] shadow-md hover:shadow-[0_0_22px_#0084D1] 
-          transition-shadow duration-320"
+          transition-shadow duration-320 hidden sm:block"
           asChild
         >
           <motion.button
