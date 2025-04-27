@@ -7,8 +7,12 @@ import { GrMoney } from "react-icons/gr";
 import { MdLocalPhone, MdEditCalendar } from "react-icons/md";
 import MobileMenu from "./MobileMenu";
 import { motion } from "motion/react";
+import { UserButton, useSession } from "@clerk/clerk-react";
+import { User } from "lucide-react";
 
 function Header() {
+  const { isLoaded, isSignedIn } = useSession();
+
   return (
     /* Si da Errores quitar el "z-10" de la className del header */
     <motion.header
@@ -58,7 +62,10 @@ function Header() {
         </div>
       </nav>
       <div className={"mt-6 cursor-pointer flex gap-4 items-center"}>
-        <Button
+        {isSignedIn && isLoaded ? (
+          <UserButton/>
+        ) : (
+          <Button
           className="bg-linear-to-r/hsl from-indigo-500 to-teal-300 px-5 
           text-[0.920rem] shadow-md hover:shadow-[0_0_22px_#0084D1] 
           transition-shadow duration-320 hidden sm:block"
@@ -71,6 +78,21 @@ function Header() {
             <Link to={"/login"}>Login</Link>
           </motion.button>
         </Button>
+        )}
+        {!isSignedIn && isLoaded ? (
+          <Button
+         className="bg-linear-to-r/hsl from-indigo-500 to-teal-300 px-5 text-[0.920rem] shadow-md hover:shadow-[0_0_22px_#0084D1] transition-shadow duration-320 hidden sm:block"
+         asChild >
+        <motion.button
+            whileTap={{ scale: 0.85 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >   
+            <Link to={"/registrate"}>Registrate</Link>
+          </motion.button>
+        </Button>
+        ): null}
+        
+        
         <ModeToggle />
         {/* Menu Para la interfaz del movil */}
         <MobileMenu
