@@ -1,4 +1,4 @@
-import ButtonMotion from "@/components/ButtonMotion";
+import ButtonMotion from "@/components/myButtons/ButtonMotion";
 import { Typewriter } from "react-simple-typewriter";
 
 function HomeSection1({ children }) {
