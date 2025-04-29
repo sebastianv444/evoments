@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/carousel";
 import { useEffect, useState } from "react";
 import { getEventsRecent } from "@/services/ticketmaster/requestTicketmaster";
-import EventCard from "./eventCard";
+import EventCard from "./EventCard";
 import RevealOnScroll from "@/components/framerMotion/RevealOnScroll";
 
 function HomeSection2() {
