@@ -5,7 +5,7 @@ function Registro() {
     <>
         <div className="bg-gradient-to-r from-[#24274f] to-[#55F1FF] h-screen flex items-center justify-center ">
             <div style={{ transform: 'translateY(130px)'}}>
-                <SignUp 
+                <SignUp signInUrl={`${import.meta.env.VITE_BASEAPP_URL}/login`}
               appearance={{
                 elements: {
                   card: {
