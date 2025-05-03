@@ -6,14 +6,14 @@ function HomeSection3() {
   return (
     <section
       className="h-[120vh] sm:h-screen bg-[#24274f] flex 
-    items-center justify-center"
+    items-center justify-center text-white"
     >
       <RevealOnScroll once={false} amount={0.3}>
         <div className="flex flex-col md:flex-row max-w-90 gap-18 md:max-w-245 lg:gap-18">
           <img
             src="/img-home/pagoHome.png"
             alt="img de pago seguro con evoments"
-            className="md:m-0 w-58 h-55 md:w-110 md:h-100 
+            className="md:m-0 w-58 h-55 md:w-90 md:h-80 3xl:w-110 3xl:h-100 
           drop-shadow-[0_0_15px_#6657f2] self-center"
           />
           <div>

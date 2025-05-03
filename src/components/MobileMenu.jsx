@@ -14,8 +14,8 @@ import { NavLink } from "react-router-dom";
 function MobileMenu({ icons }) {
   return (
     <Sheet>
-      <SheetTrigger className="md:hidden">
-        <Menu className="w-6 h-6" />
+      <SheetTrigger className="lg:hidden">
+        <Menu className="w-6 h-6 text-white" />
       </SheetTrigger>
       <SheetContent side="left" className="w-[250px]">
         <SheetHeader>

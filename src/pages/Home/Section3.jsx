@@ -6,7 +6,7 @@ function Section3() {
   return (
     <section
       className="h-[100vh] md:h-[9ñ0vh] gap-8 xl:gap-17 bg-[#24274f] flex
-    flex-wrap-reverse md:flex-row items-center justify-center p-6"
+    flex-wrap-reverse md:flex-row items-center justify-center p-6 text-white"
     >
       <RevealOnScroll once={false} amount={0.3} variant={fadeInLeft}>
         <div className="max-w-130 mb-30 md:mb-0">

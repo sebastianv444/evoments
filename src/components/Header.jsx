@@ -1,14 +1,12 @@
 import { navLinks } from "@/data/dataNavLinks";
 import { Link, NavLink } from "react-router-dom";
 import { Button } from "./ui/button";
-import { ModeToggle } from "./Mode-toggle";
 import { IoMdHome } from "react-icons/io";
 import { GrMoney } from "react-icons/gr";
 import { MdLocalPhone, MdEditCalendar } from "react-icons/md";
 import MobileMenu from "./MobileMenu";
 import { motion } from "motion/react";
 import { UserButton, useSession } from "@clerk/clerk-react";
-import { User } from "lucide-react";
 
 function Header() {
   const { isLoaded, isSignedIn } = useSession();
@@ -16,8 +14,8 @@ function Header() {
   return (
     /* Si da Errores quitar el "z-10" de la className del header */
     <motion.header
-      className="w-full p-7 sm:p-10 fixed flex justify-between items-center z-10
-    bg-gray-300/30 backdrop-blur-lg border border-b-white/50 shadow-2xl"
+      className="w-full p-7 3xl:p-10 fixed flex justify-between items-center z-10
+    bg-gray-300/30 backdrop-blur-lg border-b border-b-white/50 shadow-2xl"
       initial={{ opacity: 0, y: -100 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
@@ -26,12 +24,12 @@ function Header() {
         <img
           src="/LogosEvoments/LogoEvoments-imagotipo.png"
           alt="Logo del Nav"
-          className="w-31 mt-3 md:mt-0 md:w-39 transition duration-300 ease-in-out 
+          className="w-31 mt-3 md:mt-0 2xl:w-34 3xl:w-39 transition duration-300 ease-in-out 
           hover:drop-shadow-[0_0_15px_#18FFFF]"
         />
       </Link>
       <nav className="mt-5 text-white font-semibold">
-        <div className="hidden md:block">
+        <div className="hidden lg:block">
           <ul className="flex items-center gap-12">
             {navLinks.map(({ link, title, id }) => (
               <NavLink
@@ -46,7 +44,7 @@ function Header() {
               >
                 <li
                   className="hover:text-zinc-100 transition duration-400
-                ease-in-out text-[1.059rem]"
+                ease-in-out 3xl:text-[1.059rem]"
                 >
                   <div className="flex items-center gap-2 relative right-1">
                     {title === "Home" && <IoMdHome />}
@@ -68,32 +66,31 @@ function Header() {
           <Button
           className="bg-linear-to-r/hsl from-indigo-500 to-teal-300 px-5 
           text-[0.920rem] shadow-md hover:shadow-[0_0_22px_#0084D1] 
-          transition-shadow duration-320 hidden sm:block"
+          transition-shadow duration-320 hidden md:block"
           asChild
         >
           <motion.button
             whileTap={{ scale: 0.85 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
-            <Link to={"/login"}>Login</Link>
+            <Link to={"/registrate"}>Sign Up</Link>
           </motion.button>
         </Button>
         )}
         {!isSignedIn && isLoaded ? (
           <Button
-         className="bg-linear-to-r/hsl from-indigo-500 to-teal-300 px-5 text-[0.920rem] shadow-md hover:shadow-[0_0_22px_#0084D1] transition-shadow duration-320 hidden sm:block"
+         className="bg-transparent text-[0.920rem] shadow-md hover:shadow-[0_0_22px_#0084D1] 
+         transition-shadow duration-320 hidden md:block border-2 border-cyan-500/80 px-5 hover:bg-transparent"
          asChild >
         <motion.button
             whileTap={{ scale: 0.85 }}
             transition={{ type: "spring", stiffness: 300 }}
           >   
-            <Link to={"/registrate"}>Registrate</Link>
+            <Link to={"/login"} className="relative bottom-0.5">Sign In</Link>
           </motion.button>
         </Button>
         ): null}
         
-        
-        <ModeToggle />
         {/* Menu Para la interfaz del movil */}
         <MobileMenu
           icons={{
