@@ -6,7 +6,7 @@ function Login() {
     <div className="bg-gradient-to-b from-[#24274f] to-[#55F1FF] h-screen flex items-center justify-center">
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
           <SignedOut>
-            <SignIn
+            <SignIn signUpUrl={`${import.meta.env.VITE_BASEAPP_URL}/registrate`}
               appearance={{
                 elements: {
                   card: {
