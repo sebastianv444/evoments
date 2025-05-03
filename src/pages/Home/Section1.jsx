@@ -4,11 +4,11 @@ import { Typewriter } from "react-simple-typewriter";
 function HomeSection1({ children }) {
   return (
     <section
-      className="h-screen flex items-center p-5 md:p-7 lg:p-20 bg-cover bg-top-left
+      className="h-screen 2xl:h-[102vh] 3xl:h-screen flex items-center p-5 md:p-7 lg:p-20 bg-cover bg-top-left
       bg-[url(/background-home/fondo-home-2.png)] text-white"
     >
-      <div className="max-w-160 md:max-w-155">
-        <h1 className="text-4xl font-bold lg:text-5xl 3xl:text-6xl">
+      <div className="max-w-110 2xl:max-w-130 3xl:max-w-155 2xl:mt-9">
+        <h1 className="text-4xl font-bold 2xl:text-[39px] 3xl:text-6xl">
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 from-20% to-cyan-400">
             <Typewriter words={["Crea"]} typeSpeed={40} cursor={false} />
           </span>

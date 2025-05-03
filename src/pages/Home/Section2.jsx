@@ -34,7 +34,7 @@ function HomeSection2() {
 
   return (
     <section
-      className="h-[167vh] md:h-[110vh] bg-[#24274f] flex items-center 
+      className="h-[167vh] 2xl:h-[130vh] 3xl:h-[110vh] bg-[#24274f] flex items-center 
     justify-center overflow-hidden flex-col text-white"
     >
       <RevealOnScroll once={false} amount={0.2}>
@@ -64,8 +64,8 @@ function HomeSection2() {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
+          <CarouselPrevious className="bg-transparent" />
+          <CarouselNext className="bg-transparent" />
         </Carousel>
         <br />
       </RevealOnScroll>
