@@ -52,7 +52,7 @@ function HomeSection2() {
           opts={{
             align: "start",
           }}
-          className="w-full max-w-100 2xl:max-w-[1250px] 3xl:max-w-[1550px] p-2"
+          className="w-full max-w-100 md:max-w-[1250px] 3xl:max-w-[1550px] p-2"
         >
           <CarouselContent className="ml-1">
             {events.events.map((event, index) => (
