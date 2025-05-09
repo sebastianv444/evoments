@@ -61,36 +61,41 @@ function Header() {
       </nav>
       <div className={"mt-6 cursor-pointer flex gap-4 items-center"}>
         {isSignedIn && isLoaded ? (
-          <UserButton/>
+          <UserButton />
         ) : (
-          <Button
-          className="bg-linear-to-r/hsl from-indigo-500 to-teal-300 px-5 
+          <Link to={"/registrate"}>
+            <Button
+              className="bg-linear-to-r/hsl from-indigo-500 to-teal-300 px-5 
           text-[0.920rem] shadow-md hover:shadow-[0_0_22px_#0084D1] 
           transition-shadow duration-320 hidden md:block"
-          asChild
-        >
-          <motion.button
-            whileTap={{ scale: 0.85 }}
-            transition={{ type: "spring", stiffness: 300 }}
-          >
-            <Link to={"/registrate"}>Sign Up</Link>
-          </motion.button>
-        </Button>
+              asChild
+            >
+              <motion.button
+                whileTap={{ scale: 0.85 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                Sign Up
+              </motion.button>
+            </Button>
+          </Link>
         )}
         {!isSignedIn && isLoaded ? (
-          <Button
-         className="bg-transparent text-[0.920rem] shadow-md hover:shadow-[0_0_22px_#0084D1] 
+          <Link to={"/login"} >
+            <Button
+              className="bg-transparent text-[0.920rem] shadow-md hover:shadow-[0_0_22px_#0084D1] 
          transition-shadow duration-320 hidden md:block border-2 border-cyan-500/80 px-5 hover:bg-transparent"
-         asChild >
-        <motion.button
-            whileTap={{ scale: 0.85 }}
-            transition={{ type: "spring", stiffness: 300 }}
-          >   
-            <Link to={"/login"} className="relative bottom-0.5">Sign In</Link>
-          </motion.button>
-        </Button>
-        ): null}
-        
+              asChild
+            >
+              <motion.button
+                whileTap={{ scale: 0.85 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <span className="relative bottom-0.5">Sign In</span>
+              </motion.button>
+            </Button>
+          </Link>
+        ) : null}
+
         {/* Menu Para la interfaz del movil */}
         <MobileMenu
           icons={{
