@@ -13,12 +13,9 @@ export default function ClerkUserSync() {
     if (!user || hasSynced.current) return;
     hasSynced.current = true;
 
-    // Configurar axios para enviar cookies de sesión y usar la URL base
-    axios.defaults.withCredentials = true;
-
     (async () => {
       try {
-        await axios.post(`http://localhost:4000/api/users/sync`, {
+        const res = await axios.post(`http://localhost:4000/api/users/sync`, {
           clerkId: user.id,
           email: user.emailAddresses[0].emailAddress,
           firstName: user.firstName,
@@ -26,6 +23,7 @@ export default function ClerkUserSync() {
           phoneNumber: user.phoneNumbers?.[0]?.phoneNumber || null,
         });
         console.log("Usuario sincronizado con éxito");
+        console.log(res.data);
       } catch (err) {
         console.error("Error sincronizando usuario:", err);
       } finally {
