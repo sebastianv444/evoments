@@ -6,18 +6,19 @@ function HomeSection3() {
   return (
     <section
       className="h-[120vh] sm:h-screen bg-[#24274f] flex 
-    items-center justify-center"
+    items-center justify-center text-white"
     >
       <RevealOnScroll once={false} amount={0.3}>
-        <div className="flex flex-col md:flex-row max-w-90 gap-18 md:max-w-245 lg:gap-18">
+        <div className="flex flex-col md:flex-row max-w-90 gap-18 2xl:max-w-205 
+        md:max-w-245 lg:gap-18 3xl:max-w-245">
           <img
             src="/img-home/pagoHome.png"
             alt="img de pago seguro con evoments"
-            className="md:m-0 w-58 h-55 md:w-110 md:h-100 
+            className="md:m-0 w-58 h-55 md:w-80 md:h-70 3xl:w-110 3xl:h-100 
           drop-shadow-[0_0_15px_#6657f2] self-center"
           />
           <div>
-            <h2 className="mt-5 text-3xl font-bold md:text-4xl text-center">
+            <h2 className="mt-5 text-3xl font-bold 3xl:text-4xl text-center">
               <span className="bg-gradient-to-r from-indigo-500 to-purple-500 text-transparent bg-clip-text">
                 T
               </span>
