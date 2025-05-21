@@ -14,7 +14,7 @@ function Header() {
   return (
     /* Si da Errores quitar el "z-10" de la className del header */
     <motion.header
-      className="w-full p-7 3xl:p-10 fixed flex justify-between items-center z-10
+      className="w-full p-7 3xl:p-10 fixed flex justify-between items-center z-30
     bg-gray-300/30 backdrop-blur-lg border-b border-b-white/50 shadow-2xl"
       initial={{ opacity: 0, y: -100 }}
       animate={{ opacity: 1, y: 0 }}
@@ -80,7 +80,7 @@ function Header() {
           </Link>
         )}
         {!isSignedIn && isLoaded ? (
-          <Link to={"/login"} >
+          <Link to={"/login"}>
             <Button
               className="bg-transparent text-[0.920rem] shadow-md hover:shadow-[0_0_22px_#0084D1] 
          transition-shadow duration-320 hidden md:block border-2 border-cyan-500/80 px-5 hover:bg-transparent"
