@@ -3,6 +3,7 @@ import { useUser } from "@clerk/clerk-react";
 import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Progress } from "@/components/ui/progress";
 
 export default function ClerkUserSync() {
   const { user } = useUser();
@@ -15,13 +16,18 @@ export default function ClerkUserSync() {
 
     (async () => {
       try {
-        const res = await axios.post(`http://localhost:4000/api/users/sync`, {
-          clerkId: user.id,
-          email: user.emailAddresses[0].emailAddress,
-          firstName: user.firstName,
-          lastName: user.lastName,
-          phoneNumber: user.phoneNumbers?.[0]?.phoneNumber || null,
-        });
+        const res = await axios.post(
+          `${import.meta.env.VITE_API_URL}/api/users/sync`,
+          {
+            clerkId: user.id,
+            email: user.emailAddresses[0].emailAddress,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            phoneNumber: user.phoneNumbers?.[0]?.phoneNumber || null,
+            username: user.username,
+          }
+        );
+        console.log(user.username);
         console.log("Usuario sincronizado con éxito");
         console.log(res.data);
       } catch (err) {
@@ -34,8 +40,11 @@ export default function ClerkUserSync() {
   }, [user, navigate]);
 
   return (
-    <p className="text-center mt-8 font-semibold text-3xl">
-      Sincronizando cuenta...
-    </p>
+    <section className="w-full h-screen flex items-center justify-center bg-blue-950">
+      <p className="text-center mt-8 font-bold text-3xl">
+        Sincronizando cuenta...
+      </p>
+      <Progress value={33} />
+    </section>
   );
 }
