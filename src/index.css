@@ -1,6 +1,10 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+body {
+  scrollbar-gutter: stable;
+}
+
 @theme{
   --breakpoint-3xl: 120rem;
 }

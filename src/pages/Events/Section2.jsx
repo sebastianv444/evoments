@@ -2,6 +2,7 @@ import React, { useLayoutEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Buscador from "@/components/Buscador";
+import Section2Content from "./Section2Content";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function EventSection2() {
@@ -72,7 +73,7 @@ export default function EventSection2() {
         <div ref={maskRef} className="fixed inset-0 bg-[#181a28]">
           <div
             ref={logoRef}
-            className="absolute text-white top-[33%] left-[50%] w-full"
+            className="absolute text-white top-[40%] 2xl:top-[45%] 3xl:top-[35%] left-[50%] w-full"
             style={{
               transform: "translate(-50%, -50%)",
             }}
@@ -80,9 +81,9 @@ export default function EventSection2() {
             <img
               src="/LogosEvoments/LogoEvoments.png"
               alt="Logo Eventos"
-              className="mx-auto w-75"
+              className="mx-auto w-35 2xl:w-50 3xl:w-75"
             />
-            <p className="text-[27px] font-semibold mb-14 text-center">
+            <p className="text-[20px] 2xl:text-[27px] font-semibold mb-8 3xl:mb-14 text-center">
               <span
                 className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 
               via-cyan-300 to-emerald-400 font-bold"
@@ -106,23 +107,40 @@ export default function EventSection2() {
               voments
             </p>
             <div className="flex h-full w-full flex-col items-center justify-center">
-              <Buscador className="mb-14" />
+              <Buscador className="mb-7 2xl:mb-12 3xl:mb-14" />
               <hr
                 className="w-full border-t-[0px] h-[2.5px] bg-gradient-to-r from-indigo-600 
               via-cyan-300 to-emerald-400"
               />
               <br />
-              <p className="text-white text-3xl">Saludos!</p>
+              <div className="text-white mb-10 self-start px-8">
+                <div className="relative w-32 2xl:w-55">
+                  <select
+                    className="block appearance-none w-full bg-white text-gray-800 
+                    border border-gray-300 hover:border-blue-400 px-4 py-1 2xl:py-2 pr-8
+                    rounded-lg shadow-md focus:outline-none focus:ring-2 
+                    focus:ring-blue-400 transition"
+                    aria-placeholder="Categoria"
+                  >
+                    <option value="" hidden>
+                      Categorias
+                    </option>
+                    <option value="opcion1">Deportes</option>
+                    <option value="opcion2">Conciertos</option>
+                    <option value="opcion3">Sociales</option>
+                  </select>
+                  <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500">
+                    <svg className="fill-current h-5 w-5" viewBox="0 0 20 20">
+                      <path d="M7 7l3-3 3 3m0 6l-3 3-3-3" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
-      <section className="relative w-full bg-[#181a28] ">
-        <div className="p-8 text-white">
-          <h2>Contenido adicional</h2>
-          <p>Este contenido tendrá scroll normal</p>
-        </div>
-      </section>
+      <Section2Content />
     </>
   );
 }
