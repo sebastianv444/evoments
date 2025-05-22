@@ -35,20 +35,21 @@ export default function EventSection1() {
       <div className="z-10 flex justify-center items-center flex-col">
         <div className="flex justify-center items-center">
           <h1
-            className="md:text-6xl text-[78px] 3xl:text-[235px] font-bold text-transparent bg-clip-text 
+            className="text-[78px] md:text-6xl 2xl:text-[138px] 3xl:text-[235px] font-bold text-transparent bg-clip-text 
             bg-gradient-to-r from-indigo-600 via-cyan-300 to-emerald-400 relative 
-            left-40 3xl:left-93 3xl:bottom-46 -rotate-11"
+            left-40 2xl:left-53 3xl:left-93 2xl:bottom-46 3xl:bottom-46 -rotate-11"
           >
             EVENTOS
           </h1>
           <img
             src="/img-events/personaje-events.png"
             alt="imagen personaje section 1 de events"
-            className="z-10 w-80 3xl:w-185 relative right-39 3xl:right-123 3xl:bottom-53"
+            className="z-10 w-80 2xl:w-110 3xl:w-185 relative right-39 
+            2xl:right-72 3xl:right-123 2xl:bottom-45 3xl:bottom-53"
           />
         </div>
         <div className="bg-gradient-to-r from-indigo-600 to-emerald-500 py-2 px-3 3xl:px-6 
-        transform -skew-x-10 relative top-16 3xl:bottom-34 3xl:-top-36">
+        transform -skew-x-10 relative top-16 2xl:-top-30 3xl:bottom-34 3xl:-top-36">
           <p className="text-white text-[18px] 3xl:text-[22px] font-semibold transform skew-x-10">
             Disfrutá y Crea
           </p>

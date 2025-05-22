@@ -4,7 +4,7 @@ function Buscador({ className }) {
   return (
     <div
       className={twMerge(
-        "relative w-[590px] bg-gray-100 rounded-2xl shadow-md p-1.5 transition-all duration-150 ease-in-out hover:shadow-lg",
+        "relative 2xl:w-[590px] bg-gray-100 rounded-2xl shadow-md p-1.5 transition-all duration-150 ease-in-out hover:shadow-lg",
         className
       )}
     >
@@ -20,10 +20,10 @@ function Buscador({ className }) {
       </div>
       <input
         type="text"
-        className="w-full pl-8 pr-24 py-3 text-base text-gray-700 bg-transparent rounded-lg focus:outline-none"
+        className="w-full pl-8 pr-24 py-1.5 2xl:py-3 text-base text-gray-700 bg-transparent rounded-lg focus:outline-none"
         placeholder="conciertos, partidos, etc..."
       />
-      <button className="absolute right-1 top-1 bottom-1 px-6 bg-blue-600 text-white font-medium rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#5044e4] cursor-pointer">
+      <button className="absolute right-1 top-1 bottom-1 px-3.5 2xl:px-6 bg-blue-600 text-white font-medium rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#5044e4] cursor-pointer">
         Buscar
       </button>
     </div>
