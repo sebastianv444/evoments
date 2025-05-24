@@ -51,7 +51,7 @@ function HomeSection1({ children }) {
           <ButtonMotion to={"/events"} className="">
             Explorar Eventos
           </ButtonMotion>
-          <ButtonMotion
+          <ButtonMotion to={"/creadorEvents"}
             className="bg-transparent border-blue-600 
           border-3 hover:bg-blue-700"
           >
