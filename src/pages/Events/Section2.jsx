@@ -73,7 +73,7 @@ export default function EventSection2() {
         <div ref={maskRef} className="fixed inset-0 bg-[#181a28]">
           <div
             ref={logoRef}
-            className="absolute text-white top-[40%] 2xl:top-[45%] 3xl:top-[35%] left-[50%] w-full"
+            className="absolute text-white top-[40%] 2xl:top-[45%] 3xl:top-[40%] 4xl:top-[35%] left-[50%] w-full"
             style={{
               transform: "translate(-50%, -50%)",
             }}
@@ -81,9 +81,9 @@ export default function EventSection2() {
             <img
               src="/LogosEvoments/LogoEvoments.png"
               alt="Logo Eventos"
-              className="mx-auto w-35 2xl:w-50 3xl:w-75"
+              className="mx-auto w-35 2xl:w-50 3xl:w-60 4xl:w-75"
             />
-            <p className="text-[20px] 2xl:text-[27px] font-semibold mb-8 3xl:mb-14 text-center">
+            <p className="text-[20px] 2xl:text-[27px] font-semibold mb-8 4xl:mb-14 text-center">
               <span
                 className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 
               via-cyan-300 to-emerald-400 font-bold"
