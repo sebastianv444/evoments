@@ -5,7 +5,7 @@ import Registro from "@/pages/Registrate/Registro";
 import ClerkUserSync from "@/components/ClerkUserSync";
 import { PrivateRoute } from "@/components/PrivateRoute";
 import Events from "@/pages/Events/Index";
-import IndexCreador from "@/pages/CreadorFormulario/indexCreador";
+import IndexCreador from "@/pages/Creador/indexCreador";
 import IndexCrearEventos from "@/pages/CrearEvents/IndexCrearEventos";
 
 
@@ -21,7 +21,7 @@ function AppRoutes() {
       
       <Route element={<PrivateRoute />}>
         <Route path="/events" element={<Events />} />
-        <Route path="/creadorEvents" element={<IndexCreador />} /> {/*Hay que sustituir por lo de strip  */}
+        <Route path="/creadorEvents" element={<IndexCreador />} /> 
         <Route path="/crearEvents" element={<IndexCrearEventos />} />
       </Route>
     </Routes>

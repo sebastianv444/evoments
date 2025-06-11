@@ -40,9 +40,9 @@ function MobileMenu({ icons }) {
               >
                 <div className="flex items-center gap-2">
                   {title === "Home" && icons.home}
-                  {title === "Events" && icons.events}
+                  {title === "Eventos" && icons.events}
                   {title === "Prices" && icons.prices}
-                  {title === "Contact" && icons.contact}
+                  {title === "Contacto" && icons.contact}
                   {title}
                 </div>
               </NavLink>
@@ -63,7 +63,7 @@ function MobileMenu({ icons }) {
               ) : (
                 <div className="flex items-center gap-2">
                   <IoMdLogIn />
-                  <p>Sign Up</p>
+                  <p>Inicio Sesion</p>
                 </div>
               )}
             </NavLink>
@@ -81,7 +81,7 @@ function MobileMenu({ icons }) {
               {!isSignedIn && isLoaded ? (
                 <div className="flex items-center gap-2">
                   <HiOutlinePencilSquare />
-                  <p>Sign In</p>
+                  <p>Registro</p>
                 </div>
               ) : null}
             </NavLink>

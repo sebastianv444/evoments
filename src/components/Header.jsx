@@ -48,9 +48,9 @@ function Header() {
                 >
                   <div className="flex items-center gap-2 relative right-1">
                     {title === "Home" && <IoMdHome />}
-                    {title === "Events" && <MdEditCalendar />}
+                    {title === "Eventos" && <MdEditCalendar />}
                     {title === "Prices" && <GrMoney />}
-                    {title === "Contact" && <MdLocalPhone />}
+                    {title === "Contacto" && <MdLocalPhone />}
                     {title}
                   </div>
                 </li>
@@ -74,7 +74,7 @@ function Header() {
                 whileTap={{ scale: 0.85 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                Sign Up
+                Registro
               </motion.button>
             </Button>
           </Link>
@@ -90,7 +90,7 @@ function Header() {
                 whileTap={{ scale: 0.85 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <span className="relative bottom-0.5">Sign In</span>
+                <span className="relative bottom-0.5">Inicio Sesion</span>
               </motion.button>
             </Button>
           </Link>
@@ -100,9 +100,9 @@ function Header() {
         <MobileMenu
           icons={{
             home: <IoMdHome />,
-            events: <MdEditCalendar />,
+            eventos: <MdEditCalendar />,
             prices: <GrMoney />,
-            contact: <MdLocalPhone />,
+            Contacto: <MdLocalPhone />,
           }}
         />
       </div>
