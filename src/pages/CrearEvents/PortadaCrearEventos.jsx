@@ -2,6 +2,7 @@
 import React from "react";
 import { Boxes } from "@/components/ui/background-boxes";
 import { Typewriter } from "react-simple-typewriter";
+import { IoIosArrowDown } from "react-icons/io";
 
 export function PortadaCrearEventos() {
   return (
@@ -18,6 +19,9 @@ export function PortadaCrearEventos() {
       <p className="text-center mt-2 text-neutral-300 relative z-20">
         Crea el mejor evento de todos
       </p>
+       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex flex-col items-center text-white">
+              <IoIosArrowDown className="text-[45px] animate-bounce text-[#008afc]" />
+            </div>
     </div>
   );
 }

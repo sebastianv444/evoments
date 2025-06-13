@@ -8,7 +8,7 @@ function Login() {
       <div className="flex w-full min-h-screen items-center justify-center bg-gradient-to-b from-[#24274f] to-[#55F1FF]">
         <Card className="w-full max-w-4xl h-11/12 max-h-[90vh] p-4 rounded-2xl shadow-2xl  flex flex-col md:flex-row gap-6  bg-white/20 backdrop-blur-md mt-40">
         
-          {/*Caja del circulo */}
+         
           <div className="hidden relative lg:flex min-h-full w-1/2 flex-col items-center justify-start rounded-2xl bg-gray-200 pt-8">
             <h1 className="text-4xl font-bold text-black mb-4 drop-shadow-lg text-center">
               ¡BIENVENIDO A <br />
@@ -25,7 +25,7 @@ function Login() {
             </ul>
             </div>
           </div>
-          {/*Formulario */}
+         
           <div className="w-full flex items-center justify-center lg:w-1/2">
             <SignedOut>
               <SignIn

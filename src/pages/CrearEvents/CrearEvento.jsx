@@ -1,222 +1,218 @@
-import { useState } from "react";
+import { postCrearEvento } from "@/services/MyAPI/CrearEvento/requestCrearEvento";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
 function CrearEvento() {
     const [paso, setpaso] = useState(1);
-    const { register, formState: { errors }, handleSubmit } = useForm();
+    const { register, formState: { errors }, handleSubmit, watch } = useForm();
+    const ZonaTipo = watch("ZonaTipo");
 
-    const onSubmit = (data) => {
-        console.log(data);
+    const onSubmit = async (data) => {
+        const { titulo, descripcion, fechaEvento, categoria, zonas } = data;
+
+    try {
+        const response = await postCrearEvento(
+            titulo,
+            descripcion,
+            fechaEvento,
+            categoria,
+            zonas 
+        );
+
+        console.log("Evento creado con éxito:", response);
+    } catch (error) {
+        console.error("Error al crear el evento:", error);
     }
+    };
+
     return (
-        <>
-            <div className="flex w-full min-h-screen items-center justify-center bg-gradient-to-b from-[#0B0F1A] to-[#6C63FF]">
-                <div className="max-w-xl w-full">
-                    <form onSubmit={handleSubmit(onSubmit)} className="p-6 bg-white shadow-xl rounded-2xl animate-fade-in">
+        <div className="flex w-full min-h-screen items-center justify-center bg-gradient-to-b from-[#0B0F1A] to-[#6C63FF]">
+            <div className="max-w-xl w-full">
+                <form onSubmit={handleSubmit(onSubmit)} className="p-6 bg-white shadow-xl rounded-2xl animate-fade-in">
+                    
+                    {paso === 1 && (
+                        <div>
+                            <div className="mb-4 text-xl font-bold text-center">Evento</div>
+                            <div className="space-y-4">
+                                <label>Título:</label>
+                                <input
+                                    type="text"
+                                    {...register("titulo", { required: true })}
+                                    className="w-full p-2 border rounded"
+                                    placeholder="Nombre del evento"
+                                />
+                                {errors?.titulo && (
+                                    <p className="text-red-500 text-sm">El título es requerido</p>
+                                )}
 
-                        {paso === 1 && (
-                            <div>
-                                <div className="mb-4 text-xl font-bold text-center">Evento</div>
-                                <div className="space-y-4">
-                                    <label>Nombre:</label>
-                                    <input
-                                        type="text"
-                                        {...register("nombre", { required: true })}
-                                        className="w-full p-2 border rounded"
-                                        placeholder="Nombre del evento"
-                                    />
+                                <label>Descripción del evento:</label>
+                                <input
+                                    type="text"
+                                    {...register("descripcion", { required: true })}
+                                    className="w-full p-2 border rounded"
+                                    placeholder="Descripcion del evento"
+                                />
+                                {errors?.descripcion && (
+                                    <p className="text-red-500 text-sm">La descripción es requerida</p>
+                                )}
 
-                                    <label>Descripción del evento:</label>
-                                    <input
-                                        type="text"
-                                        {...register("descripción", { required: true })}
-                                        className="w-full p-2 border rounded"
-                                        placeholder="Descripción del evento"
-                                    />
+                                <label>Fecha del Evento:</label>
+                                <input
+                                    type="date"
+                                    {...register("fechaEvento", { required: true })}
+                                    min={new Date(Date.now() + 10 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]}
+                                    className="w-full p-2 border rounded"
+                                />
+                                {errors?.fechaEvento && (
+                                    <p className="text-red-500 text-sm">La fecha es requerida</p>
+                                )}
 
-                                    <label>Fecha del Evento</label>
-                                    <input
-                                        type="date"
-                                        {...register("FechaEvento", { required: true })}
-                                        className="w-full p-2 border rounded"
-                                    />
+                                <label>Categoría del evento:</label>
+                                <select
+                                    {...register("categoria")}
+                                    defaultValue="OTROS"
+                                    className="w-full p-2 border rounded"
+                                >
+                                    <option value="DEPORTE">Deporte</option>
+                                    <option value="CONCIERTO">Concierto</option>
+                                    <option value="SOCIAL">Social</option>
+                                    <option value="CORPORATIVO">Corporativo</option>
+                                    <option value="EDUCATIVO">Educativo</option>
+                                    <option value="OTROS">Otros</option>
+                                </select>
 
-                                    <label>Categoría del evento:</label>
+                                <div className="relative w-full">
+                                    <label className="flex items-center gap-4 mb-2">
+                                        ¿Qué zonas quieres que haya?
+                                        <div className="relative border rounded-full p-1 bg-blue-600 group w-6 h-6 flex items-center justify-center">
+                                            <span className="text-white cursor-pointer">i</span>
+                                            <div className="absolute hidden group-hover:block bg-white text-black text-sm border rounded p-2 shadow-lg w-64 z-10">
+                                                Si deseas tener todas las zonas, elige "Premium".<br />
+                                                Si deseas dos zonas, elige "VIP".
+                                            </div>
+                                        </div>
+                                    </label>
                                     <select
-                                        {...register("categoria")}
-                                        defaultValue="OTROS"
+                                        {...register("ZonaTipo")}
+                                        defaultValue="general"
                                         className="w-full p-2 border rounded"
                                     >
-                                        <option value="DEPORTE">Deporte</option>
-                                        <option value="CONCIERTO">Concierto</option>
-                                        <option value="SOCIAL">Social</option>
-                                        <option value="CORPORATIVO">Corporativo</option>
-                                        <option value="EDUCATIVO">Educativo</option>
-                                        <option value="OTROS">Otros</option>
+                                        <option value="general">General</option>
+                                        <option value="vip">VIP</option>
+                                        <option value="premium">Premium</option>
                                     </select>
-
-                                    <button
-                                        type="button"
-                                        className="btn w-full"
-                                        onClick={handleSubmit(() => setpaso(2))}
-                                    >
-                                        Siguiente
-                                    </button>
                                 </div>
+
+                                <button
+                                    type="button"
+                                    className="btn w-full"
+                                    onClick={handleSubmit(() => setpaso(2))}
+                                >
+                                    Siguiente
+                                </button>
                             </div>
-                        )}
+                        </div>
+                    )}
 
-                        {paso === 2 && (
-                            <div>
-                                <div className="mb-4 text-xl font-bold text-center">Zona de evento</div>
-                                <div className="space-y-4">
-                                    <label>Capacidad del evento:</label>
-                                    <input
-                                        type="number"
-                                        {...register("capacidad", { required: true, min: 50, max: 100000 })}
-                                        className="w-full p-2 border rounded"
-                                        placeholder="Capacidad del evento"
-                                    />
+                    {/* PASO 2 */}
+                    {paso === 2 && (
+                       
+                        <div>
+                            <div className="mb-4 text-xl font-bold text-center">Zona de evento</div>
+                            <div className="space-y-4">
+                                {(() => {
+                                    let zonas = [];
+                                    if (ZonaTipo === "vip") zonas = ["General", "VIP"];
+                                    else if (ZonaTipo === "premium") zonas = ["General", "VIP", "Premium"];
+                                    else zonas = ["General"]; 
 
-                                    <label>Precio entradas base:</label>
-                                    <input
-                                        type="number"
-                                        {...register("Preciobase", { required: true, min: 10 })}
-                                        className="w-full p-2 border rounded"
-                                        placeholder="Entradas normales"
-                                    />
+                                    return zonas.map((zona, index) => {
+                                        let min = 10;
+                                        let max = 100000; 
 
-                                    <label>Precio entradas VIP:</label>
-                                    <input
-                                        type="number"
-                                        {...register("PrecioVip", { required: true, min: 10 })}
-                                        className="w-full p-2 border rounded"
-                                        placeholder="Entradas VIP"
-                                    />
+                                        if (zona === "General") {
+                                            min = 50;
+                                            max = 100000;
+                                        } else if (zona === "VIP") {
+                                            min = 10;
+                                            max = 500;
+                                        } else if (zona === "Premium") {
+                                            min = 10;
+                                            max = 200;
+                                        }
 
-                                    <button
-                                        type="button"
-                                        className="btn w-full"
-                                        onClick={() => setpaso(1)}
-                                    >
-                                        Anterior
-                                    </button>
+                                        return (
+                                            <div key={index} className="border border-gray-300 rounded p-4 mb-4">
+                                                <input
+                                                    type="hidden"
+                                                    {...register(`zonas.${index}.nombreZona`)}
+                                                    value={zona}
+                                                />
 
-                                    <button type="submit" className="btn w-full">
-                                        Enviar
-                                    </button>
-                                </div>
+                                                <label>Capacidad de la zona {zona}:</label>
+                                                <input
+                                                    type="number"
+                                                    {...register(`zonas.${index}.capacidad`, {
+                                                        required: "La capacidad es requerida",
+                                                        min: {
+                                                            value: min,
+                                                            message: `La capacidad mínima para ${zona} es ${min}`
+                                                        },
+                                                        max: {
+                                                            value: max,
+                                                            message: `La capacidad máxima para ${zona} es ${max}`
+                                                        }
+                                                    })}
+                                                    className="w-full p-2 border rounded"
+                                                    placeholder={`Capacidad zona ${zona}`}
+                                                />
+                                                {errors?.zonas?.[index]?.capacidad && (
+                                                    <p className="text-red-500 text-sm">
+                                                        {errors.zonas[index].capacidad.message}
+                                                    </p>
+                                                )}
+
+                                                <label>Precio entradas {zona}:</label>
+                                                <input
+                                                    type="number"
+                                                    {...register(`zonas.${index}.precioEntrada`, {
+                                                        required: "El precio es requerido",
+                                                        min: {
+                                                            value: 10,
+                                                            message: `El precio mínimo para ${zona} es 10`
+                                                        }
+                                                    })}
+                                                    className="w-full p-2 border rounded"
+                                                    placeholder={`Precio zona ${zona}`}
+                                                />
+                                                {errors?.zonas?.[index]?.precioEntrada && (
+                                                    <p className="text-red-500 text-sm">
+                                                        {errors.zonas[index].precioEntrada.message}
+                                                    </p>
+                                                )}
+                                            </div>
+                                        );
+                                    });
+                                })()}
+
+                                <button
+                                    type="button"
+                                    className="btn w-full"
+                                    onClick={() => setpaso(1)}
+                                >
+                                    Anterior
+                                </button>
+
+                                <button type="submit" className="btn w-full">
+                                    Enviar
+                                </button>
                             </div>
-                        )}
-            </form>
+                        </div>
+                    )}
+                </form>
+            </div>
+        </div>
+    );
+}
 
-            {(Object.keys(errors).length > 0) && (
-                <div className="mt-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded space-y-1 text-sm">
-                    {errors.nombre && <div>El nombre es requerido</div>}
-                    {errors.descripción && <div>La descripción es requerida</div>}
-                    {errors.capacidad?.type === "required" && <div>La capacidad del evento es requerida</div>}
-                    {errors.capacidad?.type === "max" && <div>No caben tantas personas en el recinto</div>}
-                    {errors.capacidad?.type === "min" && <div>El mínimo de invitados tiene que ser más de 50 personas</div>}
-                    {errors.Preciobase?.type === "required" && <div>El precio base de las entradas es requerido</div>}
-                    {errors.Preciobase?.type === "min" && <div>El precio mínimo ha de ser 10€</div>}
-                </div>
-            )}
-        </div >
-  </div >
-</>
-
-
-
-
-
-
-    // const [paso, setpaso] = useState(1);
-    // const [titulo, settitulo] = useState("");
-    // const [descripcion, setdescripcion] = useState("");
-    // const [fecha, setfecha] = useState("");
-    // const [capacidad, setcapacidad] = useState("");
-    // const handleSend = () => {
-
-    //     if (paso === 1) {
-    //         if (titulo == "" || descripcion == "") {
-    //             alert("Por favor completa todos los campos del paso 1.");
-    //             return;
-    //         }
-    //         setpaso(2);
-    //     }
-    //     if (paso === 2) {
-    //         if (fecha == "" || capacidad == "") {
-    //             alert("Por favor completa todos los campos del paso 2.");
-    //             return;
-    //         }else if( capacidad < 1000){
-    //             alert(`La capacidad tiene que ser como mínimo 1000 personas`);
-    //                 return;
-    //         }else if( capacidad > 10000 ){
-    //             alert(`La capacidad tiene que ser como mínimo 1000 personas`);
-    //                 return;
-    //         }
-    //         setpaso(3);
-    //     }
-    // };
-    // return (
-    //     <>
-
-    //         <div className="flex w-full min-h-screen items-center justify-center bg-gradient-to-b from-[#0B0F1A] to-[#6C63FF]">
-    //             <div className="max-w-xl mx-auto mt-10 p-6 bg-white shadow-xl rounded-2xl animate-fade-in">
-    //                 <div className="mb-4 text-xl font-bold text-center">Paso {paso}</div>
-    //                 {paso === 1 && (
-    //                     <div className="space-y-4">
-    //                         <input
-    //                             className="w-full p-2 border rounded"
-    //                             value={titulo}
-    //                             onChange={(e) => settitulo(e.target.value)}
-    //                             placeholder="Título del evento"
-    //                         />
-    //                         <input
-    //                             className="w-full p-2 border rounded"
-    //                             value={descripcion}
-    //                             onChange={(e) => setdescripcion(e.target.value)}
-    //                             placeholder="Descripción del evento"
-    //                         />
-    //                         <button className="btn w-full" onClick={handleSend}>
-    //                             Siguiente
-    //                         </button>
-    //                     </div>
-    //                 )}
-    //                 {paso === 2 && (
-    //                     <div className="space-y-4">
-    //                         <label>Fecha del evento:
-    //                         <input
-    //                             type="date"
-    //                             className="w-full p-2 border rounded"
-    //                             value={fecha}
-    //                             onChange={(e) => setfecha(e.target.value)}
-    //                             />
-    //                         </label>
-    //                         <label>Capacidad del evento:
-    //                         <input
-    //                             type="number"
-    //                             className="w-full p-2 border rounded"
-    //                             value={capacidad}
-    //                             onChange={(e) => setcapacidad(e.target.value)}
-    //                         />
-    //                             </label>
-    //                         <button className="btn w-full" onClick={() => setpaso(1)}>Anterior</button>
-    //                         <button className="btn w-full" onClick={() => handleSend()}>Siguiente</button>
-    //                     </div>
-    //                 )}
-    //                 {paso === 3 && (
-    //                     <div className="space-y-4">
-    //                         <input className="w-full p-2 border rounded" placeholder="Entradas normales" />
-    //                         <textarea className="w-full p-2 border rounded" placeholder="Entradas vip" />
-    //                         <button className="btn w-full" onClick={() => setpaso(2)}>Anterior</button>
-    //                         <button className="btn w-full" onClick={() => alert('Enviado')}>Enviar</button>
-    //                     </div>
-    //                 )}
-
-    //             </div>
-    //         </div>
-    //     </>
-    // )
-    )}
-export default CrearEvento
+export default CrearEvento;
