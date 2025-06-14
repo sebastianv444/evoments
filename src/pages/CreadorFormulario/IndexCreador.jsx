@@ -1,12 +1,15 @@
 import PoortadaCreadorEvents from "@/pages/CreadorFormulario/PoortadaCreadorEvents";
-import FormularioParaSerCreador from "./FormularioParaSerCreador";
+import Section2 from "./FormularioParaSerCreador";
+import { useSmoothScroll } from "@/hooks/useSmoothScroll";
+
 function IndexCreador() {
+  useSmoothScroll()
   {/*Aqui  hacer que si esta logueado y el usuario es creador que te lleve a la pagina de crearEventos 
     Sino te muestre el formulario*/}
   return (
     <>
         <PoortadaCreadorEvents />
-        <FormularioParaSerCreador />
+        <Section2 />
     </>
     
   )

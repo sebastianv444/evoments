@@ -1,7 +1,12 @@
 import ButtonMotion from "@/components/myButtons/ButtonMotion";
+import { useUserRole } from "@/context/UserRol.context";
+import { useSession } from "@clerk/clerk-react";
 import { Typewriter } from "react-simple-typewriter";
 
 function HomeSection1({ children }) {
+  const { isCreator } = useUserRole();
+  const creador = isCreator ? "dashboard" : "creadorEvents";
+
   return (
     <section
       className="h-screen 2xl:h-[102vh] 3xl:h-screen flex items-center p-5 md:p-7 lg:p-20 bg-cover bg-top-left
@@ -51,9 +56,10 @@ function HomeSection1({ children }) {
           <ButtonMotion to={"/events"} className="">
             Explorar Eventos
           </ButtonMotion>
-          <ButtonMotion to={"/creadorEvents"}
+          <ButtonMotion
+            to={`/${creador}`}
             className="bg-transparent border-blue-600 
-          border-3 hover:bg-blue-700"
+            border-3 hover:bg-blue-700"
           >
             Crea el tuyo
           </ButtonMotion>

@@ -1,8 +1,15 @@
-import { fadeInLeft, fadeInRight } from "@/components/framerMotion/MotionVariants";
+import {
+  fadeInLeft,
+  fadeInRight,
+} from "@/components/framerMotion/MotionVariants";
 import RevealOnScroll from "@/components/framerMotion/RevealOnScroll";
 import ButtonMotion from "@/components/myButtons/ButtonMotion";
+import { useUserRole } from "@/context/UserRol.context";
 
 function Section3() {
+  const { isCreator } = useUserRole();
+  const creador = isCreator ? "dashboard" : "creadorEvents";
+
   return (
     <section
       className="h-[100vh] 2xl:h-[120vh] 3xl:h-[90vh] gap-8 xl:gap-17 bg-[#24274f] flex
@@ -26,7 +33,10 @@ function Section3() {
             el arquitecto de tus propias experiencias!
           </p>
           <br />
-          <ButtonMotion className="px-3.5 py-2.5 3xl:px-6 3xl:py-3">
+          <ButtonMotion
+            to={`/${creador}`}
+            className="px-3.5 py-2.5 3xl:px-6 3xl:py-3"
+          >
             Crear Evento
           </ButtonMotion>
         </div>

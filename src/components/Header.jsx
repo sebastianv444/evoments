@@ -7,9 +7,11 @@ import { MdLocalPhone, MdEditCalendar } from "react-icons/md";
 import MobileMenu from "./MobileMenu";
 import { motion } from "motion/react";
 import { UserButton, useSession } from "@clerk/clerk-react";
+import { useUserRole } from "../context/UserRol.context";
 
 function Header() {
   const { isLoaded, isSignedIn } = useSession();
+  const { isCreator } = useUserRole();
 
   return (
     /* Si da Errores quitar el "z-10" de la className del header */
@@ -56,6 +58,24 @@ function Header() {
                 </li>
               </NavLink>
             ))}
+            {isSignedIn && isCreator && (
+              <NavLink
+                to="/dashboard"
+                className={({ isActive }) =>
+                  isActive
+                    ? `bg-zinc-400/50 text-white font-bold rounded-md 
+                  py-3 px-6 shadow-xl transition duration-480 ease-linear`
+                    : ""
+                }
+              >
+                <li
+                  className="hover:text-zinc-100 transition duration-400
+                ease-in-out 3xl:text-[1.059rem]"
+                >
+                  Dashboard
+                </li>
+              </NavLink>
+            )}
           </ul>
         </div>
       </nav>

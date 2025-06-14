@@ -2,7 +2,7 @@ import { motion } from "motion/react";
 import { useNavigate } from "react-router-dom";
 import { twMerge } from "tailwind-merge";
 
-function ButtonMotion({ children, to = false, href = false, className }) {
+function ButtonMotion({ children, to = false, href = false, className, onClick = null }) {
   const navigate = useNavigate();
   const handleClick = () => {
     setTimeout(() => {
@@ -22,7 +22,7 @@ function ButtonMotion({ children, to = false, href = false, className }) {
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}
       transition={{ type: "spring", stiffness: 300 }}
-      onClick={handleClick}
+      onClick={onClick ?? handleClick}
     >
       {children}
     </motion.button>

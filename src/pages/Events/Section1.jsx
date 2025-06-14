@@ -2,6 +2,8 @@ import React, { useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { IoIosArrowDown } from "react-icons/io";
+import { useSession } from "@clerk/clerk-react";
+import { useUserRole } from "@/context/UserRol.context";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -49,8 +51,10 @@ export default function EventSection1() {
             2xl:right-72 3xl:right-103 4xl:right-123 2xl:bottom-45 3xl:bottom-53"
           />
         </div>
-        <div className="bg-gradient-to-r from-indigo-600 to-emerald-500 py-2 px-3 3xl:px-6 
-        transform -skew-x-10 relative top-16 2xl:-top-30 3xl:-top-37 4xl:bottom-34 4xl:-top-36">
+        <div
+          className="bg-gradient-to-r from-indigo-600 to-emerald-500 py-2 px-3 3xl:px-6 
+        transform -skew-x-10 relative top-16 2xl:-top-30 3xl:-top-37 4xl:bottom-34 4xl:-top-36"
+        >
           <p className="text-white text-[18px] 3xl:text-[22px] font-semibold transform skew-x-10">
             Disfrutá y Crea
           </p>

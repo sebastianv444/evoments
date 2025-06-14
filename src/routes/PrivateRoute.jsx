@@ -1,9 +1,6 @@
 import { Navigate, Outlet } from "react-router-dom";
 import {
   useAuth,
-  SignedIn,
-  SignedOut,
-  RedirectToSignIn,
 } from "@clerk/clerk-react";
 
 export function PrivateRoute() {
