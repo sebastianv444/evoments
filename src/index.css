@@ -1,8 +1,13 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+body {
+  scrollbar-gutter: stable;
+}
+
 @theme{
   --breakpoint-3xl: 120rem;
+  --breakpoint-4xl: 160rem;
 }
 
 @custom-variant dark (&:is(.dark *));
