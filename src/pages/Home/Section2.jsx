@@ -34,14 +34,14 @@ function HomeSection2() {
 
   return (
     <section
-      className="h-[167vh] md:h-[110vh] bg-[#24274f] flex items-center 
-    justify-center overflow-hidden flex-col"
+      className="h-[167vh] 2xl:h-[130vh] 3xl:h-[110vh] bg-[#24274f] flex items-center 
+    justify-center overflow-hidden flex-col text-white"
     >
       <RevealOnScroll once={false} amount={0.2}>
-        <h1 className="text-4xl md:text-[50px] mb-21 font-bold text-center">
+        <h1 className="text-4xl 2xl:text-[42px] 3xl:text-[50px] mb-21 font-bold text-center">
           <span className="text-[#027ECF]">Eventos</span>
           <span
-            className="text-[#027ECF] text-7xl md:text-8xl font-[300] relative 
+            className="text-[#027ECF] text-7xl 3xl:text-8xl font-[300] relative 
         top-[27px] right-[8px]"
           >
             /
@@ -52,7 +52,7 @@ function HomeSection2() {
           opts={{
             align: "start",
           }}
-          className="w-full max-w-100 md:max-w-[1550px] p-2"
+          className="w-full max-w-100 md:max-w-[1250px] 3xl:max-w-[1550px] p-2"
         >
           <CarouselContent className="ml-1">
             {events.events.map((event, index) => (
@@ -64,8 +64,8 @@ function HomeSection2() {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
+          <CarouselPrevious className="bg-transparent" />
+          <CarouselNext className="bg-transparent" />
         </Carousel>
         <br />
       </RevealOnScroll>

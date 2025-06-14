@@ -7,7 +7,7 @@ export default function EventCard({ event }) {
 
   return (
     <div
-      className="h-172 bg-black/50 backdrop-blur-lg shadow-lg/50 md:shadow-xl/50 
+      className="h-158 3xl:h-172 bg-black/50 backdrop-blur-lg shadow-lg/50 md:shadow-xl/50 
       overflow-hidden flex flex-col"
     >
       <img

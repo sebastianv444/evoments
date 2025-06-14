@@ -14,7 +14,7 @@ function ButtonMotion({ children, to = false, href = false, className }) {
     <motion.button
       to="/"
       className={twMerge(
-        `px-6 py-3 font-semibold  bg-blue-600 text-white rounded-lg 
+        `px-5 py-2 3xl:px-6 3xl:py-3 font-semibold  bg-blue-600 text-white rounded-lg 
       hover:bg-blue-700 transition-colors duration-380 ease-in-out 
         cursor-pointer shadow-md hover:shadow-[0_0_26px_#125EFC]`,
         className

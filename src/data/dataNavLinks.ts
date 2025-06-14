@@ -12,7 +12,7 @@ export const navLinks: NavLink[] = [
   },
   {
     id: 2,
-    title: "Events",
+    title: "Eventos",
     link: "/events",
   },
   {
@@ -22,7 +22,7 @@ export const navLinks: NavLink[] = [
   },
   {
     id: 4,
-    title: "Contact",
+    title: "Contacto",
     link: "/contact",
   },
 ];
