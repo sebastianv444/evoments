@@ -1,4 +1,3 @@
-// src/pages/Creador.jsx
 import React, { useEffect } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
@@ -8,8 +7,8 @@ export default function CreadorPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const success = searchParams.get('success'); // “stripe_ok”
-    const error = searchParams.get('error');     // “stripe_failed”
+    const success = searchParams.get('success');
+    const error = searchParams.get('error');
 
     if (success === 'stripe_ok') {
       toast.success('¡Cuenta de Creador creada correctamente! Ahora puedes gestionar tus eventos.');
@@ -18,14 +17,12 @@ export default function CreadorPage() {
         'El proceso de Stripe no se completó. Si deseas ser creador, intenta nuevamente.'
       );
     } else {
-      // Si entran directo a /creador sin parámetros, simplemente redirigimos a Home después de un momento
       toast(
         'Para activar tu cuenta de Creador, pulsa el botón correspondiente en el Home.',
         { icon: 'ℹ️' }
       );
     }
 
-    // Después de mostrar el toast, redirigimos al usuario a Home en 3 segundos:
     const timer = setTimeout(() => {
       navigate('/', { replace: true });
     }, 2400);

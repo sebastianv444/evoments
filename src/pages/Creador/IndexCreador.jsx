@@ -1,4 +1,4 @@
-import PoortadaCreadorEvents from "@/pages/CreadorFormulario/PoortadaCreadorEvents";
+import PoortadaCreadorEvents from "@/pages/Creador/PoortadaCreadorEvents";
 import Section2 from "./FormularioParaSerCreador";
 import { useSmoothScroll } from "@/hooks/useSmoothScroll";
 
