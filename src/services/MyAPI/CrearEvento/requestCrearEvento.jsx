@@ -5,7 +5,13 @@ export const postCrearEvento = async (
   descripcion,
   fechaEvento,
   categoria,
-  zonas
+  zonas,
+  clerkId,
+  nombreLugar,
+  direccionLugar,
+  localidad,
+  capacidadLugar,
+  descripcionLugar
 ) => {
   try {
     const res = await EvoApi.post(`/api/crear/eventos`, {
@@ -14,11 +20,19 @@ export const postCrearEvento = async (
       fechaEvento,
       categoria,
       zonas,
+      clerkId,
+      nombreLugar,
+      direccionLugar,
+      localidad,
+      capacidadLugar,
+      descripcionLugar,
     });
-    
+
     return res.data;
-    
   } catch (error) {
-    console.error("Error al enviar el creador a la base de datos:", error.status);
+    console.error(
+      "Error al enviar el creador a la base de datos:",
+      error.status
+    );
   }
 };
