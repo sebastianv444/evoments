@@ -12,6 +12,7 @@ import DashboardLayout from "@/pages/Dashboard/DashboardLayout";
 import DashboardStripe from "@/pages/Dashboard/DashboardStripe";
 import DashboardHome from "@/pages/Dashboard/DashboardHome";
 import DashboardMisEventos from "@/pages/Dashboard/DashboardMisEventos";
+import IndexCrearEventos from "@/pages/CrearEvents/IndexCrearEventos";
 
 function AppRoutes() {
   return (
@@ -35,7 +36,7 @@ function AppRoutes() {
             <Route path="historial-pagos" element={<DashboardStripe />} />
             <Route path="mis-eventos" element={<DashboardMisEventos />} />
           </Route>
-          {/* <Route path="/crear-evento" element={<CrearEvento />} /> */}
+          <Route path="/crear-evento" element={<IndexCrearEventos />} />
         </Route>
       </Route>
     </Routes>

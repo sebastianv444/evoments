@@ -1,6 +1,12 @@
+import RevealOnScroll from "@/components/framerMotion/RevealOnScroll"
+
 function DashboardMisEventos() {
   return (
-    <div>DashboardMisEventos</div>
+    <RevealOnScroll once={false} amount={0.2}>
+      <div className="p-6">
+        SIU
+      </div>
+    </RevealOnScroll>
   )
 }
 

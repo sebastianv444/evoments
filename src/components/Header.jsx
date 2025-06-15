@@ -8,6 +8,7 @@ import MobileMenu from "./MobileMenu";
 import { motion } from "motion/react";
 import { UserButton, useSession } from "@clerk/clerk-react";
 import { useUserRole } from "../context/UserRol.context";
+import { TbLayoutDashboardFilled } from "react-icons/tb";
 
 function Header() {
   const { isLoaded, isSignedIn } = useSession();
@@ -49,10 +50,9 @@ function Header() {
                 ease-in-out 3xl:text-[1.059rem]"
                 >
                   <div className="flex items-center gap-2 relative right-1">
-                    {title === "Home" && <IoMdHome />}
-                    {title === "Events" && <MdEditCalendar />}
-                    {title === "Prices" && <GrMoney />}
-                    {title === "Contact" && <MdLocalPhone />}
+                    {title === "Inicio" && <IoMdHome />}
+                    {title === "Eventos" && <MdEditCalendar />}
+                    {title === "Contacto" && <MdLocalPhone />}
                     {title}
                   </div>
                 </li>
@@ -72,7 +72,10 @@ function Header() {
                   className="hover:text-zinc-100 transition duration-400
                 ease-in-out 3xl:text-[1.059rem]"
                 >
-                  Dashboard
+                  <div className="flex items-center gap-2 relative right-1">
+                    <TbLayoutDashboardFilled />
+                    Dashboard
+                  </div>
                 </li>
               </NavLink>
             )}
@@ -119,10 +122,9 @@ function Header() {
         {/* Menu Para la interfaz del movil */}
         <MobileMenu
           icons={{
-            home: <IoMdHome />,
-            events: <MdEditCalendar />,
-            prices: <GrMoney />,
-            contact: <MdLocalPhone />,
+            inicio: <IoMdHome />,
+            eventos: <MdEditCalendar />,
+            contacto: <MdLocalPhone />,
           }}
         />
       </div>

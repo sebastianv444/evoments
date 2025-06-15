@@ -13,7 +13,7 @@ export function NavMain({ items }) {
     <SidebarGroup>
       <SidebarGroupContent className="flex flex-col gap-2">
         <SidebarMenu>
-          <Link to={"crear-evento"}>
+          <Link to={"/crear-evento"}>
             <SidebarMenuItem className="flex items-center gap-2">
               <SidebarMenuButton
                 tooltip="Quick Create"

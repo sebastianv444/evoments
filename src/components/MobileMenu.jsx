@@ -11,10 +11,14 @@ import { navLinks } from "@/data/dataNavLinks";
 import { Menu } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import { HiOutlinePencilSquare } from "react-icons/hi2";
-import { UserButton, useSession } from "@clerk/clerk-react";
+import { useSession } from "@clerk/clerk-react";
+import { useUserRole } from "@/context/UserRol.context";
+import { TbLayoutDashboardFilled } from "react-icons/tb";
 
 function MobileMenu({ icons }) {
   const { isLoaded, isSignedIn } = useSession();
+  const { isCreator } = useUserRole();
+
   return (
     <Sheet>
       <SheetTrigger className="lg:hidden">
@@ -39,15 +43,30 @@ function MobileMenu({ icons }) {
                 className={({ isActive }) => (isActive ? "text-zinc-400" : "")}
               >
                 <div className="flex items-center gap-2">
-                  {title === "Home" && icons.home}
-                  {title === "Events" && icons.events}
-                  {title === "Prices" && icons.prices}
-                  {title === "Contact" && icons.contact}
+                  {title === "Inicio" && icons.inicio}
+                  {title === "Eventos" && icons.eventos}
+                  {title === "Contacto" && icons.contacto}
                   {title}
                 </div>
               </NavLink>
             </li>
           ))}
+          {isSignedIn && isCreator && (
+            <NavLink
+              to="/dashboard"
+              className={({ isActive }) => (isActive ? "text-zinc-400" : "")}
+            >
+              <li
+                className="hover:text-zinc-400 transition duration-400 
+                ease-in-out text-[1.070rem] mx-7 my-9"
+              >
+                <div className="flex items-center gap-2">
+                  <TbLayoutDashboardFilled />
+                  Dashboard
+                </div>
+              </li>
+            </NavLink>
+          )}
           <li
             className="hover:text-zinc-400 transition duration-400 
                 ease-in-out text-[1.070rem] mx-7 my-9"
@@ -58,9 +77,7 @@ function MobileMenu({ icons }) {
                 isActive ? "text-zinc-400 flex" : ""
               }
             >
-              {isSignedIn && isLoaded ? (
-                <UserButton />
-              ) : (
+              {isSignedIn && isLoaded ? null : (
                 <div className="flex items-center gap-2">
                   <IoMdLogIn />
                   <p>Sign Up</p>
