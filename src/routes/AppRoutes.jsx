@@ -13,6 +13,7 @@ import DashboardStripe from "@/pages/Dashboard/DashboardStripe";
 import DashboardHome from "@/pages/Dashboard/DashboardHome";
 import DashboardMisEventos from "@/pages/Dashboard/DashboardMisEventos";
 import IndexCrearEventos from "@/pages/CrearEvents/IndexCrearEventos";
+import Contacto from "@/pages/Contacto/Contacto";
 
 function AppRoutes() {
   return (
@@ -22,7 +23,7 @@ function AppRoutes() {
       <Route path="/registrate" element={<Registro />} />
       <Route path="/sync" element={<ClerkUserSync />} />
 
-      <Route path="/contact" /* element={} */ />
+      <Route path="/contact" element={<Contacto />} />
 
       <Route element={<PrivateRoute />}>
         <Route path="/events" element={<Events />} />
