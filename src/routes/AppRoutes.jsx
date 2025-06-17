@@ -13,7 +13,8 @@ import DashboardStripe from "@/pages/Dashboard/DashboardStripe";
 import DashboardHome from "@/pages/Dashboard/DashboardHome";
 import DashboardMisEventos from "@/pages/Dashboard/DashboardMisEventos";
 import IndexCrearEventos from "@/pages/CrearEvents/IndexCrearEventos";
-import Contacto from "@/pages/Contacto/Contacto";
+import Contacto from "@/pages/Contacto/contacto";
+
 
 function AppRoutes() {
   return (
@@ -22,8 +23,7 @@ function AppRoutes() {
       <Route path="/login" element={<Login />} />
       <Route path="/registrate" element={<Registro />} />
       <Route path="/sync" element={<ClerkUserSync />} />
-
-      <Route path="/contact" element={<Contacto />} />
+       <Route path="/contact" element={<Contacto />} /> 
 
       <Route element={<PrivateRoute />}>
         <Route path="/events" element={<Events />} />
@@ -33,7 +33,6 @@ function AppRoutes() {
         <Route element={<CreatorRoute />}>
           <Route path="/dashboard" element={<DashboardLayout />}>
             <Route index element={<DashboardHome />} />
-            <Route path="crear-evento" /* element={} */ />
             <Route path="historial-pagos" element={<DashboardStripe />} />
             <Route path="mis-eventos" element={<DashboardMisEventos />} />
           </Route>

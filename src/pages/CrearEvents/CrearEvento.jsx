@@ -159,6 +159,25 @@ function CrearEvento() {
                   </select>
                 </div>
 
+                <label>Aforo máximo del evento:</label>
+                <input
+                  type="number"
+                  {...register("aforoMaximo", {
+                    required: "La capacidad es requerida",
+                    min: {
+                      value: 50,
+                      message: "El aforo mínimo es 50",
+                    },
+                  })}
+                  className="w-full p-2 border rounded"
+                  placeholder="Aforo máximo del evento"
+                />
+                {errors?.aforoMaximo && (
+                  <p className="text-red-500 text-sm">
+                    {errors.aforoMaximo.message}
+                  </p>
+                )}
+
                 <button
                   type="button"
                   className="btn w-full"
@@ -178,6 +197,7 @@ function CrearEvento() {
               </div>
               <div className="space-y-4">
                 {(() => {
+                 
                   let zonas = [];
                   if (ZonaTipo === "vip") zonas = ["General", "VIP"];
                   else if (ZonaTipo === "premium")
@@ -185,19 +205,11 @@ function CrearEvento() {
                   else zonas = ["General"];
 
                   return zonas.map((zona, index) => {
-                    let min = 10;
-                    let max = 100000;
-
-                    if (zona === "General") {
-                      min = 50;
-                      max = 100000;
-                    } else if (zona === "VIP") {
-                      min = 10;
-                      max = 500;
-                    } else if (zona === "Premium") {
-                      min = 10;
-                      max = 200;
-                    }
+                    // const aforoMaximo = Number(watch("aforoMaximo") || 0);
+                    // const sumaCapacidades = zonas.reduce(
+                    //   (acc, zona) => acc + Number(zona.capacidad || 0),
+                    //   0
+                    // );
 
                     return (
                       <div
@@ -210,29 +222,23 @@ function CrearEvento() {
                           value={zona}
                         />
 
-                        <label>Capacidad de la zona {zona}:</label>
                         <input
                           type="number"
                           {...register(`zonas.${index}.capacidad`, {
                             required: "La capacidad es requerida",
-                            min: {
-                              value: min,
-                              message: `La capacidad mínima para ${zona} es ${min}`,
-                            },
+                            min: { value: 0, message: "Debe ser mayor que 0" },
                             max: {
-                              value: max,
-                              message: `La capacidad máxima para ${zona} es ${max}`,
+                              value: aforoMaximo,
+                              message: "La capacidad no puede superar el aforo máximo",
                             },
                           })}
                           className="w-full p-2 border rounded"
                           placeholder={`Capacidad zona ${zona}`}
+                          // disabled={
+                          //   sumaCapacidades >= aforoMaximo &&
+                          //   Number(zonas[index]?.capacidad || 0) === 0
+                          // }
                         />
-                        {errors?.zonas?.[index]?.capacidad && (
-                          <p className="text-red-500 text-sm">
-                            {errors.zonas[index].capacidad.message}
-                          </p>
-                        )}
-
                         <label>Precio entradas {zona}:</label>
                         <input
                           type="number"
