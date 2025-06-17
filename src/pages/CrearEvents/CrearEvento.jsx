@@ -15,6 +15,7 @@ function CrearEvento() {
     watch,
   } = useForm();
   const ZonaTipo = watch("ZonaTipo");
+  const aforoMaximo = Number(watch("aforoMaximo")) || 0;
 
   const onSubmit = async (data) => {
     const {
@@ -197,20 +198,12 @@ function CrearEvento() {
               </div>
               <div className="space-y-4">
                 {(() => {
-                 
                   let zonas = [];
                   if (ZonaTipo === "vip") zonas = ["General", "VIP"];
                   else if (ZonaTipo === "premium")
                     zonas = ["General", "VIP", "Premium"];
                   else zonas = ["General"];
-
                   return zonas.map((zona, index) => {
-                    // const aforoMaximo = Number(watch("aforoMaximo") || 0);
-                    // const sumaCapacidades = zonas.reduce(
-                    //   (acc, zona) => acc + Number(zona.capacidad || 0),
-                    //   0
-                    // );
-
                     return (
                       <div
                         key={index}
@@ -222,6 +215,7 @@ function CrearEvento() {
                           value={zona}
                         />
 
+                        <label>Capacidad de la entrada en la zona {zona}:</label>
                         <input
                           type="number"
                           {...register(`zonas.${index}.capacidad`, {
@@ -234,11 +228,12 @@ function CrearEvento() {
                           })}
                           className="w-full p-2 border rounded"
                           placeholder={`Capacidad zona ${zona}`}
-                          // disabled={
-                          //   sumaCapacidades >= aforoMaximo &&
-                          //   Number(zonas[index]?.capacidad || 0) === 0
-                          // }
                         />
+                        {errors?.zonas?.[index]?.capacidad && (
+                          <p className="text-red-500 text-sm">
+                            {errors.zonas[index].capacidad.message}
+                          </p>
+                        )}
                         <label>Precio entradas {zona}:</label>
                         <input
                           type="number"
@@ -261,7 +256,6 @@ function CrearEvento() {
                     );
                   });
                 })()}
-
                 <button
                   type="button"
                   className="btn w-full"
@@ -273,7 +267,19 @@ function CrearEvento() {
                 <button
                   type="button"
                   className="btn w-full"
-                  onClick={() => setpaso(3)}
+                  onClick={handleSubmit(() => {
+                    const zonas = Array.isArray(watch("zonas")) ? watch("zonas") : [];
+                    const sumaZonas = zonas.reduce(
+                      (sum, zona) => sum + (Number(zona?.capacidad) || 0),
+                      0
+                    );
+
+                    if (sumaZonas > aforoMaximo) {
+                      alert(`⚠️ La suma de las capacidades por zona ${sumaZonas} supera el aforo máximo ${aforoMaximo}.`)
+                    } else {
+                      setpaso(3);
+                    }
+                  })}
                 >
                   Siguiente
                 </button>
@@ -292,7 +298,7 @@ function CrearEvento() {
                   type="text"
                   {...register("nombreLugar", { required: true })}
                   className="w-full p-2 border rounded"
-                  placeholder="Nombre del evento"
+                  placeholder="Nombre de la ubicación"
                 />
                 {errors?.nombreLugar && (
                   <p className="text-red-500 text-sm">El nombre es requerido</p>
@@ -326,14 +332,17 @@ function CrearEvento() {
 
                 <label>Capacidad Total:</label>
                 <input
-                  type="text"
-                  {...register("capacidadLugar", { required: true })}
+                  type="number"
+                  {...register("capacidadLugar", {
+                    required: "La capacidad total del evento es requerida",
+                    min: { value: aforoMaximo, message: "Debe ser mayor o igual que el aforo máximo" },
+                  })}
                   className="w-full p-2 border rounded"
-                  placeholder="Localidad de tu evento"
+                  placeholder="Capacidad total de la ubicación"
                 />
                 {errors?.capacidadLugar && (
                   <p className="text-red-500 text-sm">
-                    La capacidad total del lugar es requerida
+                    {errors.capacidadLugar.message}
                   </p>
                 )}
 
@@ -342,7 +351,7 @@ function CrearEvento() {
                   type="text"
                   {...register("descripcionLugar", { required: false })}
                   className="w-full p-2 border rounded"
-                  placeholder="Localidad de tu evento"
+                  placeholder="Descripcion de tu ubicación"
                 />
                 {errors?.capacidadLugar && (
                   <p className="text-red-500 text-sm">
@@ -353,9 +362,9 @@ function CrearEvento() {
                 <button
                   type="button"
                   className="btn w-full"
-                  onClick={handleSubmit(() => setpaso(2))}
+                  onClick={() => setpaso(2)}
                 >
-                  anterior
+                  Anterior
                 </button>
                 <button type="submit" className="btn w-full">
                   Enviar
