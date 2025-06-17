@@ -73,7 +73,7 @@ function CrearEvento() {
   };
 
   return (
-    <div className="flex w-full min-h-screen items-center justify-center bg-gradient-to-b from-[#0B0F1A] to-[#6C63FF]">
+    <div className="flex w-full min-h-screen items-center justify-center bg-gradient-to-b from-[#0E172B] to-[#6C63FF]">
       <div className="max-w-xl w-full">
         <form
           onSubmit={handleSubmit(onSubmit)}

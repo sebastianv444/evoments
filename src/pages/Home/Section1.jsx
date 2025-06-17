@@ -1,4 +1,5 @@
 import ButtonMotion from "@/components/myButtons/ButtonMotion";
+import ButtonBlocker from "@/components/myButtons/ButttonBlocker";
 import { useUserRole } from "@/context/UserRol.context";
 import { useSession } from "@clerk/clerk-react";
 import { Typewriter } from "react-simple-typewriter";
@@ -56,13 +57,13 @@ function HomeSection1({ children }) {
           <ButtonMotion to={"/events"} className="">
             Explorar Eventos
           </ButtonMotion>
-          <ButtonMotion
+          <ButtonBlocker
             to={`/${creador}`}
             className="bg-transparent border-blue-600 
             border-3 hover:bg-blue-700"
           >
             Crea el tuyo
-          </ButtonMotion>
+          </ButtonBlocker>
         </div>
       </div>
       {children}

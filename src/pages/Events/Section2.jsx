@@ -1,8 +1,11 @@
-import React, { useLayoutEffect, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Buscador from "@/components/Buscador";
 import Section2Content from "./Section2Content";
+import { useDebounce } from "@/hooks/useDebouncedValue";
+import { searchEvents } from "@/services/MyAPI/eventSearch/eventService";
+
 gsap.registerPlugin(ScrollTrigger);
 
 export default function EventSection2() {
@@ -10,6 +13,7 @@ export default function EventSection2() {
   const maskRef = useRef(null);
   const logoRef = useRef(null);
   const [origin, setOrigin] = useState(null);
+  const contentRef = useRef(null);
 
   // Esto es para medir el centro de la imagen:
   useLayoutEffect(() => {
@@ -24,44 +28,75 @@ export default function EventSection2() {
   useLayoutEffect(() => {
     if (!origin) return;
 
-    const el = maskRef.current;
-    const logo = logoRef.current;
+    const id = setTimeout(() => {
+      const el = maskRef.current;
+      const logo = logoRef.current;
 
-    el.style.transformOrigin = `${origin.x} ${origin.y}`;
-    el.style.scale = 1.5;
-    el.style.opacity = 0;
+      el.style.transformOrigin = `${origin.x} ${origin.y}`;
+      el.style.scale = 1.5;
+      el.style.opacity = 0;
 
-    logo.style.transform = "translate(-50%, -50%) scale(2)";
-    logo.style.opacity = 0;
+      logo.style.transform = "translate(-50%, -50%) scale(2)";
+      logo.style.opacity = 0;
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: triggerRef.current,
-        scroller: window,
-        start: "top top",
-        end: "+=100%",
-        scrub: true,
-        pin: true,
-        pinSpacing: true,
-        // markers: true,
-      },
-    });
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: triggerRef.current,
+          scroller: window,
+          start: "top top",
+          end: () => {
+            const h1 = triggerRef.current.getBoundingClientRect().height;
+            const h2 = contentRef.current.getBoundingClientRect().height;
+            return `+=${h1 + h2}`;
+          },
+          scrub: true,
+          pin: true,
+          pinSpacing: true,
+          // markers: true,
+        },
+      });
 
-    // Animación del contenedor: fade-in + contrae (outside→in)
-    tl.to(el, { opacity: 1, duration: 0.2, ease: "none" }, 0).to(
-      el,
-      { scale: 1, ease: "none" },
-      0
-    );
+      // Animación del contenedor: fade-in + contrae (outside→in)
+      tl.to(el, { opacity: 1, duration: 0.2, ease: "none" }, 0).to(
+        el,
+        { scale: 1, ease: "none" },
+        0
+      );
 
-    tl.to(logo, { opacity: 1, duration: 0.2, ease: "none" }, 0).to(
-      logo,
-      { scale: 1, duration: 1, ease: "none" },
-      0
-    );
+      tl.to(logo, { opacity: 1, duration: 0.2, ease: "none" }, 0).to(
+        logo,
+        { scale: 1, duration: 1, ease: "none" },
+        0
+      );
+    }, 100);
 
-    return () => ScrollTrigger.getAll().forEach((st) => st.kill());
+    return () => {
+      clearTimeout(id);
+      ScrollTrigger.getAll().forEach((st) => st.kill());
+    };
   }, [origin]);
+
+  /* Esto es para el buscador */
+  const [query, setQuery] = useState("");
+  const debounced = useDebounce(query);
+  const [results, setResults] = useState();
+
+  // cada vez que cambie `debounced`, llamamos a la API
+  useEffect(() => {
+    if (!debounced.trim()) {
+      setResults(null);
+      return;
+    }
+    let active = true;
+    searchEvents(debounced).then((data) => {
+      /* console.log(data) */
+      if (active) setResults(data || []);
+    });
+    return () => {
+      active = false;
+    };
+  }, [debounced]);
+  /* Esto es para el buscador */
 
   return (
     <>
@@ -107,7 +142,11 @@ export default function EventSection2() {
               voments
             </p>
             <div className="flex h-full w-full flex-col items-center justify-center">
-              <Buscador className="mb-7 2xl:mb-12 3xl:mb-14" />
+              <Buscador
+                className="mb-7 2xl:mb-12 3xl:mb-14"
+                value={query}
+                onChange={setQuery}
+              />
               <hr
                 className="w-full border-t-[0px] h-[2.5px] bg-gradient-to-r from-indigo-600 
               via-cyan-300 to-emerald-400"
@@ -140,7 +179,9 @@ export default function EventSection2() {
           </div>
         </div>
       </section>
-      <Section2Content />
+      <div ref={contentRef}>
+        <Section2Content events={results} />
+      </div>
     </>
   );
 }
