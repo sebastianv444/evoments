@@ -178,7 +178,7 @@ function DashboardStripe() {
       <div className="@container/main flex flex-1 flex-col gap-2">
         <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6">
           <div className="p-8 max-w-255 self-center">
-            <h1 className="font-bold 3xl:text-4xl mb-5 text-center">
+            <h1 className="font-bold text-[28px] 3xl:text-4xl mb-5 text-center">
               Historial de Pagos
             </h1>
             <p className="mb-5">

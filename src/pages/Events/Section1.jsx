@@ -2,8 +2,6 @@ import React, { useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { IoIosArrowDown } from "react-icons/io";
-import { useSession } from "@clerk/clerk-react";
-import { useUserRole } from "@/context/UserRol.context";
 
 gsap.registerPlugin(ScrollTrigger);
 

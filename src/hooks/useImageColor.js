@@ -1,4 +1,3 @@
-// src/hooks/useImageColor.js
 import { useState, useEffect } from "react";
 import { Vibrant } from "node-vibrant/browser";
 

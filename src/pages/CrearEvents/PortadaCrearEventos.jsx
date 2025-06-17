@@ -5,7 +5,7 @@ import { IoIosArrowDown } from "react-icons/io";
 
 export function PortadaCrearEventos() {
   return (
-    <div className="h-140 relative w-full overflow-hidden bg-slate-900 flex flex-col items-center justify-center rounded-lg">
+    <div className="h-screen relative w-full overflow-hidden bg-slate-900 flex flex-col items-center justify-center">
       <div className="absolute inset-0 w-full h-full bg-slate-900 z-20 [mask-image:radial-gradient(transparent,white)] pointer-events-none" />
       <Boxes />
       <h1 className="text-4xl font-bold md:text-[39px] 3xl:text-6xl z-20">

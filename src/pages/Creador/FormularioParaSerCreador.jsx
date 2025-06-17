@@ -1,4 +1,5 @@
 import ButtonMotion from "@/components/myButtons/ButtonMotion";
+import ButtonBlocker from "@/components/myButtons/ButttonBlocker";
 import { useUser } from "@clerk/clerk-react";
 import { toast } from "sonner";
 
@@ -67,7 +68,13 @@ function Section2() {
           dolorum nemo.
         </p>
       </div>
-      <ButtonMotion className="mt-6" onClick={handleClick}>Convertirme en creador</ButtonMotion>
+      <ButtonBlocker
+        className="mt-6"
+        onClick={handleClick}
+      >
+        Convertirme en creador
+      </ButtonBlocker>
+      {/* <ButtonMotion className="mt-6" onClick={handleClick}></ButtonMotion> */}
     </section>
   );
 }
