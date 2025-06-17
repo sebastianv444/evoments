@@ -353,12 +353,7 @@ function CrearEvento() {
                   className="w-full p-2 border rounded"
                   placeholder="Descripcion de tu ubicación"
                 />
-                {errors?.capacidadLugar && (
-                  <p className="text-red-500 text-sm">
-                    La descripción es requerida
-                  </p>
-                )}
-
+                
                 <button
                   type="button"
                   className="btn w-full"
