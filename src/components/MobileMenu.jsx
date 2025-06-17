@@ -80,7 +80,7 @@ function MobileMenu({ icons }) {
               {isSignedIn && isLoaded ? null : (
                 <div className="flex items-center gap-2">
                   <IoMdLogIn />
-                  <p>Sign Up</p>
+                  <p>Login</p>
                 </div>
               )}
             </NavLink>
@@ -98,7 +98,7 @@ function MobileMenu({ icons }) {
               {!isSignedIn && isLoaded ? (
                 <div className="flex items-center gap-2">
                   <HiOutlinePencilSquare />
-                  <p>Sign In</p>
+                  <p>Registro</p>
                 </div>
               ) : null}
             </NavLink>

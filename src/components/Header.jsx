@@ -98,7 +98,7 @@ function Header() {
                 whileTap={{ scale: 0.85 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                Sign Up
+                Registro
               </motion.button>
             </Button>
           </Link>
@@ -114,7 +114,7 @@ function Header() {
                 whileTap={{ scale: 0.85 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
-                <span className="relative bottom-0.5">Sign In</span>
+                <span className="relative bottom-0.5">Login</span>
               </motion.button>
             </Button>
           </Link>
