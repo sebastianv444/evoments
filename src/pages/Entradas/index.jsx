@@ -2,6 +2,7 @@ import { useSmoothScroll } from "@/hooks/useSmoothScroll";
 import { useLocation, useNavigate } from "react-router-dom";
 import EntradaSection1 from "./Section1";
 import { useEffect } from "react";
+import Footer from "@/components/footer";
 
 function Entradas() {
   useSmoothScroll();

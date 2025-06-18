@@ -1,3 +1,4 @@
+import Footer from "@/components/footer";
 import ButtonMotion from "@/components/myButtons/ButtonMotion";
 import { useForm } from "react-hook-form";
 import { MdLocalPhone, MdAccessTime, MdLocationOn, MdEmail } from "react-icons/md";
@@ -136,6 +137,7 @@ export default function contacto() {
 
         </div>
       </div>
+      <Footer></Footer>
     </>
   );
 }
