@@ -24,12 +24,12 @@ export default function Admin() {
 
   return (
     <>
-    <div className='pt-30 bg-yellow-600 h-screen'>
+    <div className='pt-40 bg-yellow-600 h-screen'>
       <h2 className="text-2xl font-bold mb-10 text-center">Eventos Pendientes</h2>
       {eventos.length === 0 ? (
         <p className="text-center text-gray-600">No hay eventos pendientes.</p>
       ) : (
-        <div className="px-6 grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <div className="px-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
           {eventos.map(evento => (
             <div key={evento.id} className="border p-4 rounded shadow bg-white">
               <h3 className="text-lg font-semibold mb-2">{evento.titulo}</h3>
