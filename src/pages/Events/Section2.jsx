@@ -182,6 +182,7 @@ export default function EventSection2() {
       <div ref={contentRef}>
         <Section2Content events={results} />
       </div>
+      
     </>
   );
 }

@@ -1,3 +1,4 @@
+import Footer from "@/components/footer";
 import HomeSection1 from "./Section1";
 import HomeSection2 from "./Section2";
 import HomeSection3 from "./Section3";
@@ -12,6 +13,7 @@ function Home() {
       <HomeSection2 />
       <HomeSection3 />
       <HomeSection4 />
+      <Footer></Footer>
     </>
   );
 }

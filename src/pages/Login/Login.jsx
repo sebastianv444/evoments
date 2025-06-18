@@ -1,6 +1,7 @@
 import { SignedOut, SignIn } from "@clerk/clerk-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Typewriter } from "react-simple-typewriter";
+import Footer from "@/components/footer";
 
 function Login() {
   return (
@@ -73,6 +74,7 @@ function Login() {
           </div>
         </Card>
       </div>
+      <Footer></Footer>
     </>
   );
 }
