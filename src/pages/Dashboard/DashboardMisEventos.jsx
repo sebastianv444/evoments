@@ -9,7 +9,7 @@ function DashboardMisEventos() {
 
   if (!isLoaded) return <div>Cargando...</div>;
 
-  // Email del usuario logueado
+  
   const email = user.primaryEmailAddress?.emailAddress;
   
     useEffect(() => {

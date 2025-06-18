@@ -16,6 +16,7 @@ import IndexCrearEventos from "@/pages/CrearEvents/IndexCrearEventos";
 import Contacto from "@/pages/Contacto/contacto";
 import Entradas from "@/pages/Entradas";
 import Admin from "@/pages/Admin/admin";
+import { AdminRoute } from "./AdminRoute";
 
 
 
@@ -43,6 +44,11 @@ function AppRoutes() {
           </Route>
           <Route path="/crear-evento" element={<IndexCrearEventos />} />
         </Route>
+
+        <Route element={<AdminRoute/>}>
+          <Route path="/admin" element={<Admin/>}/>
+        </Route>
+        
       </Route>
     </Routes>
   );
