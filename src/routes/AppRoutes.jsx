@@ -19,8 +19,6 @@ import Success from "@/pages/Entradas/Success";
 import Admin from "@/pages/Admin/admin";
 import { AdminRoute } from "./AdminRoute";
 
-
-
 function AppRoutes() {
   return (
     <Routes>
@@ -28,7 +26,7 @@ function AppRoutes() {
       <Route path="/login" element={<Login />} />
       <Route path="/registrate" element={<Registro />} />
       <Route path="/sync" element={<ClerkUserSync />} />
-      <Route path="/contact" element={<Contacto />} /> 
+      <Route path="/contact" element={<Contacto />} />
 
       <Route element={<PrivateRoute />}>
         <Route path="/events" element={<Events />} />
@@ -47,10 +45,9 @@ function AppRoutes() {
 
         <Route path="/success" element={<Success />} />
 
-        <Route element={<AdminRoute/>}>
-          <Route path="/admin" element={<Admin/>}/>
+        <Route element={<AdminRoute />}>
+          <Route path="/admin" element={<Admin />} />
         </Route>
-        
       </Route>
     </Routes>
   );
