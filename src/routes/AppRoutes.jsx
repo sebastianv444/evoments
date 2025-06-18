@@ -39,6 +39,7 @@ function AppRoutes() {
             <Route index element={<DashboardHome />} />
             <Route path="historial-pagos" element={<DashboardStripe />} />
             <Route path="mis-eventos" element={<DashboardMisEventos />} />
+            <Route path="admin" element={<Admin />} />
           </Route>
           <Route path="/crear-evento" element={<IndexCrearEventos />} />
         </Route>

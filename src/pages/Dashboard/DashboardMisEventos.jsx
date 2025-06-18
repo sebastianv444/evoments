@@ -1,4 +1,4 @@
-import RevealOnScroll from "@/components/framerMotion/RevealOnScroll"
+import RevealOnScroll from "@/components/framerMotion/RevealOnScroll";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useUser } from "@clerk/clerk-react";
@@ -9,39 +9,48 @@ function DashboardMisEventos() {
 
   if (!isLoaded) return <div>Cargando...</div>;
 
-  
   const email = user.primaryEmailAddress?.emailAddress;
-  
-    useEffect(() => {
-      if (!user) return;
-      axios.post(`${import.meta.env.VITE_API_URL}/api/eventos-creadores/eventosDelCreador`,{
-        email
-      })
-        .then(res => setEventos(res.data))
-        .catch(err => console.error(err));
-    }, [user]);
 
-    const manejarAccion = async (id, accion) => {
-        try {
-          await axios.post(`${import.meta.env.VITE_API_URL}/api/eventos-creadores/cambiarEventocreador`, {
-            id,
-            accion,
-          });
-          setEventos(prev => prev.filter(evento => evento.id !== id));
-        } catch (err) {
-          console.error(err);
+  useEffect(() => {
+    if (!user) return;
+    axios
+      .post(
+        `${
+          import.meta.env.VITE_API_URL
+        }/api/eventos-creadores/eventosDelCreador`,
+        {
+          email,
         }
-      };
+      )
+      .then((res) => setEventos(res.data))
+      .catch((err) => console.error(err));
+  }, [user]);
+
+  const manejarAccion = async (id, accion) => {
+    try {
+      await axios.post(
+        `${
+          import.meta.env.VITE_API_URL
+        }/api/eventos-creadores/cambiarEventocreador`,
+        {
+          id,
+          accion,
+        }
+      );
+      setEventos((prev) => prev.filter((evento) => evento.id !== id));
+    } catch (err) {
+      console.error(err);
+    }
+  };
   return (
-    <>
+    <section className="w-full flex p-10 gap-8 flex-wrap">
       {eventos.map((e) => (
-      <RevealOnScroll once={false} amount={0.2}>
-        <EventosCreadorCard event={e} onAction={manejarAccion}/>
-    </RevealOnScroll>
+        <RevealOnScroll once={false} amount={0.2}>
+          <EventosCreadorCard event={e} onAction={manejarAccion} />
+        </RevealOnScroll>
       ))}
-    </>
-    
-  )
+    </section>
+  );
 }
 
-export default DashboardMisEventos
+export default DashboardMisEventos;

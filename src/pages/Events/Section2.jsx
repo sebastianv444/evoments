@@ -5,6 +5,8 @@ import Buscador from "@/components/Buscador";
 import Section2Content from "./Section2Content";
 import { useDebounce } from "@/hooks/useDebouncedValue";
 import { searchEvents } from "@/services/MyAPI/eventSearch/eventService";
+import { data } from "react-router-dom";
+import EvoApi from "@/services/MyAPI/EvoApi";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -97,6 +99,25 @@ export default function EventSection2() {
     };
   }, [debounced]);
   /* Esto es para el buscador */
+
+/*   const [defaultEvents, setDefaultEvents] = useState([]);
+  useEffect(() => {
+    if (!debounced.trim()) {
+      const fetchDefaultEvents = async () => {
+        try {
+          const res = await EvoApi.get("/api/events/top5");
+          if (!res.ok) throw new Error("Network response was not ok");
+          const data = await res.json();
+          setDefaultEvents(data.events || []);
+        } catch (error) {
+          setDefaultEvents([]);
+          // Optionally log error
+        }
+      };
+      fetchDefaultEvents();
+    }
+    console.log(defaultEvents, data);
+  }, [debounced]); */
 
   return (
     <>

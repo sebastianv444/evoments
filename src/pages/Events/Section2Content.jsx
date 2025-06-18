@@ -19,7 +19,7 @@ function Section2Content({ events }) {
       className="relative -mt-[305px] 2xl:-mt-[250px] 3xl:-mt-[408px] 4xl:-mt-[550px] 
         overflow-hidden z-50 w-full bg-[#181a28] py-5 px-8"
     >
-      <div className="grid grid-cols-1 sm:grid-cols-2 4xl:grid-cols-5 4xl:gap-6 4xl:pl-3">
+      <div className="flex flex-wrap gap-10 3xl:gap-12 4xl:gap-9 4xl:pl-3">
         {events
           ?.filter((e) => e.estado === "ACTIVO")
           .map((e) => (

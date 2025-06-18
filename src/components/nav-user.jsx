@@ -27,7 +27,7 @@ export function NavUser({ user }) {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <SidebarMenuButton size="lg">
-              <Avatar className="h-8 w-8 rounded-lg grayscale">
+              <Avatar className="h-8 w-8 rounded-lg">
                 <AvatarImage src={user.imageUrl} alt={user.fullName} />
                 <AvatarFallback className="rounded-lg">CN</AvatarFallback>
               </Avatar>

@@ -6,6 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 import { ClerkProvider } from "@clerk/clerk-react";
 import { Notificador } from "./components/Notificador";
 import { UserRoleProvider } from "./context/UserRol.context";
+import { AdminProvider } from "./context/AdminRol.context";
 
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
@@ -20,7 +21,9 @@ createRoot(document.getElementById("root")).render(
         {/* Toaster global */}
         <Notificador />
         <UserRoleProvider>
-          <App />
+          <AdminProvider>
+            <App />
+          </AdminProvider>
         </UserRoleProvider>
       </ClerkProvider>
     </BrowserRouter>
