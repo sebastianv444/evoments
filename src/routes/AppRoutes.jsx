@@ -28,7 +28,6 @@ function AppRoutes() {
       <Route path="/registrate" element={<Registro />} />
       <Route path="/sync" element={<ClerkUserSync />} />
       <Route path="/contact" element={<Contacto />} /> 
-      <Route path="/admin" element={<Admin/>}/>
 
       <Route element={<PrivateRoute />}>
         <Route path="/events" element={<Events />} />

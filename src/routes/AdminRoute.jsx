@@ -12,13 +12,11 @@ export function AdminRoute() {
   useEffect(() => {
     const checkAdmin = async () => {
       if (!user) return;
-      const identificaccion = user.id;
+      
+      const email = user.primaryEmailAddress?.emailAddress;
       try {
-        const email = user.primaryEmailAddress?.emailAddress;
-        console.log("Este es el gmail del usuario que esta registrado", email);
-
         const res = await EvoApi.post(`/api/admin/comprobacionAdmin`, {
-          identificaccion,
+          email,
         });
 
         setIsAdmin(res.data?.isAdmin); 
