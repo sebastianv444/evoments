@@ -11,7 +11,7 @@ export default function DashboardLayout() {
         "--sidebar-width": "calc(var(--spacing) * 72)",
         "--header-height": "calc(var(--spacing) * 12)",
       }}
-      className="pt-35 md:pt-40"
+      className="pt-29 md:pt-40"
     >
       <AppSidebar variant="inset" className="pt-45" />
       <SidebarInset className="bg-gray-300">

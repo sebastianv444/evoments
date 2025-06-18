@@ -7,17 +7,12 @@ import {
   IconFileAi,
   IconFileDescription,
   IconFileWord,
-  IconFolder,
-  IconHelp,
   IconListDetails,
   IconReport,
-  IconSearch,
-  IconSettings,
   IconUsers,
 } from "@tabler/icons-react";
 
 import { NavMain } from "@/components/nav-main";
-import { NavSecondary } from "@/components/nav-secondary";
 import { NavUser } from "@/components/nav-user";
 import {
   Sidebar,
@@ -25,9 +20,14 @@ import {
   SidebarFooter,
 } from "@/components/ui/sidebar";
 import { useUser } from "@clerk/clerk-react";
+import { useAdmin } from "@/context/AdminRol.context";
 
-const data = {
-  navMain: [
+export function AppSidebar({ ...props }) {
+  const { user } = useUser();
+  const { isLoading, isAdmin } = useAdmin();
+
+  // Base del menú
+  const navMain = [
     {
       title: "General",
       url: "/dashboard",
@@ -43,108 +43,32 @@ const data = {
       url: "historial-pagos",
       icon: IconChartBar,
     },
-    {
-      title: "Projects",
-      url: "#",
-      icon: IconFolder,
-    },
-    {
-      title: "Team",
-      url: "#",
-      icon: IconUsers,
-    },
-  ],
-  navClouds: [
-    {
-      title: "Capture",
-      icon: IconCamera,
-      isActive: true,
-      url: "#",
-      items: [
-        {
-          title: "Active Proposals",
-          url: "#",
-        },
-        {
-          title: "Archived",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Proposal",
-      icon: IconFileDescription,
-      url: "#",
-      items: [
-        {
-          title: "Active Proposals",
-          url: "#",
-        },
-        {
-          title: "Archived",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Prompts",
-      icon: IconFileAi,
-      url: "#",
-      items: [
-        {
-          title: "Active Proposals",
-          url: "#",
-        },
-        {
-          title: "Archived",
-          url: "#",
-        },
-      ],
-    },
-  ],
-  navSecondary: [
-    {
-      title: "Settings",
-      url: "#",
-      icon: IconSettings,
-    },
-    {
-      title: "Get Help",
-      url: "#",
-      icon: IconHelp,
-    },
-    {
-      title: "Search",
-      url: "#",
-      icon: IconSearch,
-    },
-  ],
-  documents: [
-    {
-      name: "Data Library",
-      url: "#",
-      icon: IconDatabase,
-    },
-    {
-      name: "Reports",
-      url: "#",
-      icon: IconReport,
-    },
-    {
-      name: "Word Assistant",
-      url: "#",
-      icon: IconFileWord,
-    },
-  ],
-};
+  ];
 
-export function AppSidebar({ ...props }) {
-  const { user } = useUser();
+  // Si no carga aún, mostramos placeholder
+  if (isLoading) {
+    return (
+      <Sidebar collapsible="offcanvas" {...props}>
+        <SidebarContent className="bg-[#022880] text-white">
+          <p className="p-4">Cargando menú…</p>
+        </SidebarContent>
+      </Sidebar>
+    );
+  }
+
+  // Añadimos la opción Admin sólo si corresponde
+  if (isAdmin) {
+    navMain.push({
+      title: "Admin",
+      url: "admin",
+      icon: IconUsers,
+    });
+  }
+
   return (
     <Sidebar collapsible="offcanvas" {...props}>
       <SidebarContent className="bg-[#022880] text-white">
-        <NavMain items={data.navMain} />
-        <NavSecondary items={data.navSecondary} className="mt-auto" />
+        <NavMain items={navMain} />
       </SidebarContent>
       <SidebarFooter className="bg-[#022880] text-white">
         <NavUser user={user} />

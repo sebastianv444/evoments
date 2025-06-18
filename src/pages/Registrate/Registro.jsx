@@ -1,10 +1,11 @@
+import Footer from "@/components/footer";
 import { SignUp } from "@clerk/clerk-react";
 import { Typewriter } from "react-simple-typewriter";
 
 function Registro() {
   return (
     <>
-      <div className="bg-gradient-to-b from-[#24274f] to-[#55F1FF] font-semibold flex justify-center items-center min-h-screen p-4 pt-34">
+      <div className="bg-gradient-to-b from-[#24274f] to-[#55F1FF] font-semibold flex justify-center items-center min-h-screen p-4 pt-40">
         <div className="bg-white p-4 rounded-xl shadow-2xl w-full max-w-[800px] relative overflow-hidden gap-6 md:gap-0 grid md:grid-cols-2">
 
           {/* Efecto de fondo diagonal */}
@@ -83,6 +84,7 @@ function Registro() {
           </div>
         </div>
       </div>
+      <Footer></Footer>
     </>
   );
 }

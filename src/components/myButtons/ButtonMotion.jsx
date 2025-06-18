@@ -2,12 +2,25 @@ import { motion } from "motion/react";
 import { useNavigate } from "react-router-dom";
 import { twMerge } from "tailwind-merge";
 
-function ButtonMotion({ children, to = false, href = false, className, onClick = null }) {
+function ButtonMotion({
+  children,
+  to = false,
+  href = false,
+  className,
+  onClick = null,
+  color = null,
+  event = null,
+  img = null,
+}) {
   const navigate = useNavigate();
   const handleClick = () => {
     setTimeout(() => {
-      if (to) navigate(`${to}`);
-      else if (href) window.open(href);
+      if ((to && (color || event)) || img) {
+        return navigate(`${to}`, { state: { color, event, img } });
+      }
+      if (to) {
+        navigate(`${to}`);
+      } else if (href) window.open(href);
     }, 280);
   };
   return (
