@@ -13,8 +13,13 @@ import DashboardStripe from "@/pages/Dashboard/DashboardStripe";
 import DashboardHome from "@/pages/Dashboard/DashboardHome";
 import DashboardMisEventos from "@/pages/Dashboard/DashboardMisEventos";
 import IndexCrearEventos from "@/pages/CrearEvents/IndexCrearEventos";
+import Contacto from "@/pages/Contacto/contacto";
 import Entradas from "@/pages/Entradas";
 import Success from "@/pages/Entradas/Success";
+import Admin from "@/pages/Admin/admin";
+import { AdminRoute } from "./AdminRoute";
+
+
 
 function AppRoutes() {
   return (
@@ -23,7 +28,7 @@ function AppRoutes() {
       <Route path="/login" element={<Login />} />
       <Route path="/registrate" element={<Registro />} />
       <Route path="/sync" element={<ClerkUserSync />} />
-      <Route path="/contact" /* element={} */ />
+      <Route path="/contact" element={<Contacto />} /> 
 
       <Route element={<PrivateRoute />}>
         <Route path="/events" element={<Events />} />
@@ -41,6 +46,11 @@ function AppRoutes() {
         </Route>
 
         <Route path="/success" element={<Success />} />
+
+        <Route element={<AdminRoute/>}>
+          <Route path="/admin" element={<Admin/>}/>
+        </Route>
+        
       </Route>
     </Routes>
   );
