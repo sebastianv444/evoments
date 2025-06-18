@@ -14,6 +14,7 @@ import DashboardHome from "@/pages/Dashboard/DashboardHome";
 import DashboardMisEventos from "@/pages/Dashboard/DashboardMisEventos";
 import IndexCrearEventos from "@/pages/CrearEvents/IndexCrearEventos";
 import Entradas from "@/pages/Entradas";
+import Success from "@/pages/Entradas/Success";
 
 function AppRoutes() {
   return (
@@ -38,6 +39,8 @@ function AppRoutes() {
           </Route>
           <Route path="/crear-evento" element={<IndexCrearEventos />} />
         </Route>
+
+        <Route path="/success" element={<Success />} />
       </Route>
     </Routes>
   );
